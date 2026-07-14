@@ -1,0 +1,20 @@
+# Ignore build output and local artefacts from the Docker context.
+node_modules
+.output
+.vite
+dist
+build
+coverage
+playwright-report
+test-results
+.git
+.github
+.env
+.env.*
+!.env.example
+tests/e2e
+*.log
+Dockerfile
+docker-compose*.yml
+deploy/nginx
+docs

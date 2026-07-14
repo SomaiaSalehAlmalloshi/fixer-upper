@@ -9,38 +9,1340 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedWorkflowRouteImport } from './routes/_authenticated/workflow'
+import { Route as AuthenticatedStressRouteImport } from './routes/_authenticated/stress'
+import { Route as AuthenticatedRulesRouteImport } from './routes/_authenticated/rules'
+import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
+import { Route as AuthenticatedReportingRouteImport } from './routes/_authenticated/reporting'
+import { Route as AuthenticatedOperationalRouteImport } from './routes/_authenticated/operational'
+import { Route as AuthenticatedMarketRouteImport } from './routes/_authenticated/market'
+import { Route as AuthenticatedLiquidityRouteImport } from './routes/_authenticated/liquidity'
+import { Route as AuthenticatedImportsRouteImport } from './routes/_authenticated/imports'
+import { Route as AuthenticatedHistoryRouteImport } from './routes/_authenticated/history'
+import { Route as AuthenticatedDictionaryRouteImport } from './routes/_authenticated/dictionary'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedCreditRouteImport } from './routes/_authenticated/credit'
+import { Route as AuthenticatedComplianceRouteImport } from './routes/_authenticated/compliance'
+import { Route as AuthenticatedApprovalsRouteImport } from './routes/_authenticated/approvals'
+import { Route as AuthenticatedAiRouteImport } from './routes/_authenticated/ai'
+import { Route as AuthenticatedWorkflowIndexRouteImport } from './routes/_authenticated/workflow.index'
+import { Route as AuthenticatedStressIndexRouteImport } from './routes/_authenticated/stress.index'
+import { Route as AuthenticatedReportingIndexRouteImport } from './routes/_authenticated/reporting.index'
+import { Route as AuthenticatedOperationalIndexRouteImport } from './routes/_authenticated/operational.index'
+import { Route as AuthenticatedMarketIndexRouteImport } from './routes/_authenticated/market.index'
+import { Route as AuthenticatedLiquidityIndexRouteImport } from './routes/_authenticated/liquidity.index'
+import { Route as AuthenticatedImportsIndexRouteImport } from './routes/_authenticated/imports.index'
+import { Route as AuthenticatedDictionaryIndexRouteImport } from './routes/_authenticated/dictionary.index'
+import { Route as AuthenticatedCreditIndexRouteImport } from './routes/_authenticated/credit.index'
+import { Route as AuthenticatedComplianceIndexRouteImport } from './routes/_authenticated/compliance.index'
+import { Route as AuthenticatedAiIndexRouteImport } from './routes/_authenticated/ai.index'
+import { Route as ApiPublicReadyRouteImport } from './routes/api/public/ready'
+import { Route as ApiPublicHealthRouteImport } from './routes/api/public/health'
+import { Route as AuthenticatedWorkflowTasksRouteImport } from './routes/_authenticated/workflow.tasks'
+import { Route as AuthenticatedWorkflowRulesRouteImport } from './routes/_authenticated/workflow.rules'
+import { Route as AuthenticatedWorkflowPreferencesRouteImport } from './routes/_authenticated/workflow.preferences'
+import { Route as AuthenticatedWorkflowNotificationsRouteImport } from './routes/_authenticated/workflow.notifications'
+import { Route as AuthenticatedWorkflowAuditRouteImport } from './routes/_authenticated/workflow.audit'
+import { Route as AuthenticatedWorkflowApprovalsRouteImport } from './routes/_authenticated/workflow.approvals'
+import { Route as AuthenticatedStressReportsRouteImport } from './routes/_authenticated/stress.reports'
+import { Route as AuthenticatedStressBuilderRouteImport } from './routes/_authenticated/stress.builder'
+import { Route as AuthenticatedStressIdRouteImport } from './routes/_authenticated/stress.$id'
+import { Route as AuthenticatedReportingSchedulesRouteImport } from './routes/_authenticated/reporting.schedules'
+import { Route as AuthenticatedReportingHistoryRouteImport } from './routes/_authenticated/reporting.history'
+import { Route as AuthenticatedReportingKeyRouteImport } from './routes/_authenticated/reporting.$key'
+import { Route as AuthenticatedOperationalReportsRouteImport } from './routes/_authenticated/operational.reports'
+import { Route as AuthenticatedOperationalRegisterRouteImport } from './routes/_authenticated/operational.register'
+import { Route as AuthenticatedOperationalRcsaRouteImport } from './routes/_authenticated/operational.rcsa'
+import { Route as AuthenticatedOperationalLossesRouteImport } from './routes/_authenticated/operational.losses'
+import { Route as AuthenticatedOperationalKrisRouteImport } from './routes/_authenticated/operational.kris'
+import { Route as AuthenticatedOperationalIncidentsRouteImport } from './routes/_authenticated/operational.incidents'
+import { Route as AuthenticatedOperationalFraudRouteImport } from './routes/_authenticated/operational.fraud'
+import { Route as AuthenticatedOperationalCyberRouteImport } from './routes/_authenticated/operational.cyber'
+import { Route as AuthenticatedOperationalBcpRouteImport } from './routes/_authenticated/operational.bcp'
+import { Route as AuthenticatedMarketVarRouteImport } from './routes/_authenticated/market.var'
+import { Route as AuthenticatedMarketSensitivityRouteImport } from './routes/_authenticated/market.sensitivity'
+import { Route as AuthenticatedMarketScenariosRouteImport } from './routes/_authenticated/market.scenarios'
+import { Route as AuthenticatedMarketReportsRouteImport } from './routes/_authenticated/market.reports'
+import { Route as AuthenticatedMarketPositionsRouteImport } from './routes/_authenticated/market.positions'
+import { Route as AuthenticatedMarketIrRouteImport } from './routes/_authenticated/market.ir'
+import { Route as AuthenticatedMarketFxRouteImport } from './routes/_authenticated/market.fx'
+import { Route as AuthenticatedMarketEquityRouteImport } from './routes/_authenticated/market.equity'
+import { Route as AuthenticatedMarketDurationRouteImport } from './routes/_authenticated/market.duration'
+import { Route as AuthenticatedMarketCommodityRouteImport } from './routes/_authenticated/market.commodity'
+import { Route as AuthenticatedLiquidityStressRouteImport } from './routes/_authenticated/liquidity.stress'
+import { Route as AuthenticatedLiquidityReportsRouteImport } from './routes/_authenticated/liquidity.reports'
+import { Route as AuthenticatedLiquidityNsfrRouteImport } from './routes/_authenticated/liquidity.nsfr'
+import { Route as AuthenticatedLiquidityLcrRouteImport } from './routes/_authenticated/liquidity.lcr'
+import { Route as AuthenticatedLiquidityHqlaRouteImport } from './routes/_authenticated/liquidity.hqla'
+import { Route as AuthenticatedLiquidityGapRouteImport } from './routes/_authenticated/liquidity.gap'
+import { Route as AuthenticatedLiquidityFundingRouteImport } from './routes/_authenticated/liquidity.funding'
+import { Route as AuthenticatedLiquidityCashflowRouteImport } from './routes/_authenticated/liquidity.cashflow'
+import { Route as AuthenticatedLiquidityBucketsRouteImport } from './routes/_authenticated/liquidity.buckets'
+import { Route as AuthenticatedImportsHistoryRouteImport } from './routes/_authenticated/imports.history'
+import { Route as AuthenticatedImportsPackageRouteImport } from './routes/_authenticated/imports.$package'
+import { Route as AuthenticatedDictionaryValidateRouteImport } from './routes/_authenticated/dictionary.validate'
+import { Route as AuthenticatedDictionaryPackageRouteImport } from './routes/_authenticated/dictionary.$package'
+import { Route as AuthenticatedCreditWatchlistRouteImport } from './routes/_authenticated/credit.watchlist'
+import { Route as AuthenticatedCreditReportsRouteImport } from './routes/_authenticated/credit.reports'
+import { Route as AuthenticatedCreditPortfolioRouteImport } from './routes/_authenticated/credit.portfolio'
+import { Route as AuthenticatedCreditLoansRouteImport } from './routes/_authenticated/credit.loans'
+import { Route as AuthenticatedCreditEarlyWarningRouteImport } from './routes/_authenticated/credit.early-warning'
+import { Route as AuthenticatedCreditCollateralRouteImport } from './routes/_authenticated/credit.collateral'
+import { Route as AuthenticatedCreditBorrowersRouteImport } from './routes/_authenticated/credit.borrowers'
+import { Route as AuthenticatedComplianceViolationsRouteImport } from './routes/_authenticated/compliance.violations'
+import { Route as AuthenticatedComplianceTasksRouteImport } from './routes/_authenticated/compliance.tasks'
+import { Route as AuthenticatedComplianceRulesRouteImport } from './routes/_authenticated/compliance.rules'
+import { Route as AuthenticatedComplianceReportsRouteImport } from './routes/_authenticated/compliance.reports'
+import { Route as AuthenticatedComplianceMonitoringRouteImport } from './routes/_authenticated/compliance.monitoring'
+import { Route as AuthenticatedComplianceAuditRouteImport } from './routes/_authenticated/compliance.audit'
+import { Route as AuthenticatedComplianceApprovalsRouteImport } from './routes/_authenticated/compliance.approvals'
+import { Route as AuthenticatedAssetsCategoryRouteImport } from './routes/_authenticated/assets.$category'
+import { Route as AuthenticatedAiRiskRouteImport } from './routes/_authenticated/ai.risk'
+import { Route as AuthenticatedAiRecommendationsRouteImport } from './routes/_authenticated/ai.recommendations'
+import { Route as AuthenticatedAiQueryRouteImport } from './routes/_authenticated/ai.query'
+import { Route as AuthenticatedAiPredictionRouteImport } from './routes/_authenticated/ai.prediction'
+import { Route as AuthenticatedAiLiquidityRouteImport } from './routes/_authenticated/ai.liquidity'
+import { Route as AuthenticatedAiFraudRouteImport } from './routes/_authenticated/ai.fraud'
+import { Route as AuthenticatedAiComplianceRouteImport } from './routes/_authenticated/ai.compliance'
+import { Route as AuthenticatedAiCapitalRouteImport } from './routes/_authenticated/ai.capital'
+import { Route as ApiPublicHooksWorkflowTickRouteImport } from './routes/api/public/hooks/workflow-tick'
+import { Route as ApiPublicCreditPortfolioSummaryRouteImport } from './routes/api/public/credit/portfolio-summary'
+import { Route as AuthenticatedComplianceTasksIdRouteImport } from './routes/_authenticated/compliance.tasks.$id'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedWorkflowRoute = AuthenticatedWorkflowRouteImport.update({
+  id: '/workflow',
+  path: '/workflow',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedStressRoute = AuthenticatedStressRouteImport.update({
+  id: '/stress',
+  path: '/stress',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRulesRoute = AuthenticatedRulesRouteImport.update({
+  id: '/rules',
+  path: '/rules',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReportsRoute = AuthenticatedReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedReportingRoute = AuthenticatedReportingRouteImport.update({
+  id: '/reporting',
+  path: '/reporting',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedOperationalRoute =
+  AuthenticatedOperationalRouteImport.update({
+    id: '/operational',
+    path: '/operational',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedMarketRoute = AuthenticatedMarketRouteImport.update({
+  id: '/market',
+  path: '/market',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedLiquidityRoute = AuthenticatedLiquidityRouteImport.update({
+  id: '/liquidity',
+  path: '/liquidity',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedImportsRoute = AuthenticatedImportsRouteImport.update({
+  id: '/imports',
+  path: '/imports',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedHistoryRoute = AuthenticatedHistoryRouteImport.update({
+  id: '/history',
+  path: '/history',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDictionaryRoute = AuthenticatedDictionaryRouteImport.update({
+  id: '/dictionary',
+  path: '/dictionary',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCreditRoute = AuthenticatedCreditRouteImport.update({
+  id: '/credit',
+  path: '/credit',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedComplianceRoute = AuthenticatedComplianceRouteImport.update({
+  id: '/compliance',
+  path: '/compliance',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedApprovalsRoute = AuthenticatedApprovalsRouteImport.update({
+  id: '/approvals',
+  path: '/approvals',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedAiRoute = AuthenticatedAiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedWorkflowIndexRoute =
+  AuthenticatedWorkflowIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedStressIndexRoute =
+  AuthenticatedStressIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedStressRoute,
+  } as any)
+const AuthenticatedReportingIndexRoute =
+  AuthenticatedReportingIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedReportingRoute,
+  } as any)
+const AuthenticatedOperationalIndexRoute =
+  AuthenticatedOperationalIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedMarketIndexRoute =
+  AuthenticatedMarketIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedLiquidityIndexRoute =
+  AuthenticatedLiquidityIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedImportsIndexRoute =
+  AuthenticatedImportsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedImportsRoute,
+  } as any)
+const AuthenticatedDictionaryIndexRoute =
+  AuthenticatedDictionaryIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedDictionaryRoute,
+  } as any)
+const AuthenticatedCreditIndexRoute =
+  AuthenticatedCreditIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedComplianceIndexRoute =
+  AuthenticatedComplianceIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedAiIndexRoute = AuthenticatedAiIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAiRoute,
+} as any)
+const ApiPublicReadyRoute = ApiPublicReadyRouteImport.update({
+  id: '/api/public/ready',
+  path: '/api/public/ready',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicHealthRoute = ApiPublicHealthRouteImport.update({
+  id: '/api/public/health',
+  path: '/api/public/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedWorkflowTasksRoute =
+  AuthenticatedWorkflowTasksRouteImport.update({
+    id: '/tasks',
+    path: '/tasks',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedWorkflowRulesRoute =
+  AuthenticatedWorkflowRulesRouteImport.update({
+    id: '/rules',
+    path: '/rules',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedWorkflowPreferencesRoute =
+  AuthenticatedWorkflowPreferencesRouteImport.update({
+    id: '/preferences',
+    path: '/preferences',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedWorkflowNotificationsRoute =
+  AuthenticatedWorkflowNotificationsRouteImport.update({
+    id: '/notifications',
+    path: '/notifications',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedWorkflowAuditRoute =
+  AuthenticatedWorkflowAuditRouteImport.update({
+    id: '/audit',
+    path: '/audit',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedWorkflowApprovalsRoute =
+  AuthenticatedWorkflowApprovalsRouteImport.update({
+    id: '/approvals',
+    path: '/approvals',
+    getParentRoute: () => AuthenticatedWorkflowRoute,
+  } as any)
+const AuthenticatedStressReportsRoute =
+  AuthenticatedStressReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedStressRoute,
+  } as any)
+const AuthenticatedStressBuilderRoute =
+  AuthenticatedStressBuilderRouteImport.update({
+    id: '/builder',
+    path: '/builder',
+    getParentRoute: () => AuthenticatedStressRoute,
+  } as any)
+const AuthenticatedStressIdRoute = AuthenticatedStressIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => AuthenticatedStressRoute,
+} as any)
+const AuthenticatedReportingSchedulesRoute =
+  AuthenticatedReportingSchedulesRouteImport.update({
+    id: '/schedules',
+    path: '/schedules',
+    getParentRoute: () => AuthenticatedReportingRoute,
+  } as any)
+const AuthenticatedReportingHistoryRoute =
+  AuthenticatedReportingHistoryRouteImport.update({
+    id: '/history',
+    path: '/history',
+    getParentRoute: () => AuthenticatedReportingRoute,
+  } as any)
+const AuthenticatedReportingKeyRoute =
+  AuthenticatedReportingKeyRouteImport.update({
+    id: '/$key',
+    path: '/$key',
+    getParentRoute: () => AuthenticatedReportingRoute,
+  } as any)
+const AuthenticatedOperationalReportsRoute =
+  AuthenticatedOperationalReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalRegisterRoute =
+  AuthenticatedOperationalRegisterRouteImport.update({
+    id: '/register',
+    path: '/register',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalRcsaRoute =
+  AuthenticatedOperationalRcsaRouteImport.update({
+    id: '/rcsa',
+    path: '/rcsa',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalLossesRoute =
+  AuthenticatedOperationalLossesRouteImport.update({
+    id: '/losses',
+    path: '/losses',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalKrisRoute =
+  AuthenticatedOperationalKrisRouteImport.update({
+    id: '/kris',
+    path: '/kris',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalIncidentsRoute =
+  AuthenticatedOperationalIncidentsRouteImport.update({
+    id: '/incidents',
+    path: '/incidents',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalFraudRoute =
+  AuthenticatedOperationalFraudRouteImport.update({
+    id: '/fraud',
+    path: '/fraud',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalCyberRoute =
+  AuthenticatedOperationalCyberRouteImport.update({
+    id: '/cyber',
+    path: '/cyber',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedOperationalBcpRoute =
+  AuthenticatedOperationalBcpRouteImport.update({
+    id: '/bcp',
+    path: '/bcp',
+    getParentRoute: () => AuthenticatedOperationalRoute,
+  } as any)
+const AuthenticatedMarketVarRoute = AuthenticatedMarketVarRouteImport.update({
+  id: '/var',
+  path: '/var',
+  getParentRoute: () => AuthenticatedMarketRoute,
+} as any)
+const AuthenticatedMarketSensitivityRoute =
+  AuthenticatedMarketSensitivityRouteImport.update({
+    id: '/sensitivity',
+    path: '/sensitivity',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedMarketScenariosRoute =
+  AuthenticatedMarketScenariosRouteImport.update({
+    id: '/scenarios',
+    path: '/scenarios',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedMarketReportsRoute =
+  AuthenticatedMarketReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedMarketPositionsRoute =
+  AuthenticatedMarketPositionsRouteImport.update({
+    id: '/positions',
+    path: '/positions',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedMarketIrRoute = AuthenticatedMarketIrRouteImport.update({
+  id: '/ir',
+  path: '/ir',
+  getParentRoute: () => AuthenticatedMarketRoute,
+} as any)
+const AuthenticatedMarketFxRoute = AuthenticatedMarketFxRouteImport.update({
+  id: '/fx',
+  path: '/fx',
+  getParentRoute: () => AuthenticatedMarketRoute,
+} as any)
+const AuthenticatedMarketEquityRoute =
+  AuthenticatedMarketEquityRouteImport.update({
+    id: '/equity',
+    path: '/equity',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedMarketDurationRoute =
+  AuthenticatedMarketDurationRouteImport.update({
+    id: '/duration',
+    path: '/duration',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedMarketCommodityRoute =
+  AuthenticatedMarketCommodityRouteImport.update({
+    id: '/commodity',
+    path: '/commodity',
+    getParentRoute: () => AuthenticatedMarketRoute,
+  } as any)
+const AuthenticatedLiquidityStressRoute =
+  AuthenticatedLiquidityStressRouteImport.update({
+    id: '/stress',
+    path: '/stress',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityReportsRoute =
+  AuthenticatedLiquidityReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityNsfrRoute =
+  AuthenticatedLiquidityNsfrRouteImport.update({
+    id: '/nsfr',
+    path: '/nsfr',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityLcrRoute =
+  AuthenticatedLiquidityLcrRouteImport.update({
+    id: '/lcr',
+    path: '/lcr',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityHqlaRoute =
+  AuthenticatedLiquidityHqlaRouteImport.update({
+    id: '/hqla',
+    path: '/hqla',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityGapRoute =
+  AuthenticatedLiquidityGapRouteImport.update({
+    id: '/gap',
+    path: '/gap',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityFundingRoute =
+  AuthenticatedLiquidityFundingRouteImport.update({
+    id: '/funding',
+    path: '/funding',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityCashflowRoute =
+  AuthenticatedLiquidityCashflowRouteImport.update({
+    id: '/cashflow',
+    path: '/cashflow',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedLiquidityBucketsRoute =
+  AuthenticatedLiquidityBucketsRouteImport.update({
+    id: '/buckets',
+    path: '/buckets',
+    getParentRoute: () => AuthenticatedLiquidityRoute,
+  } as any)
+const AuthenticatedImportsHistoryRoute =
+  AuthenticatedImportsHistoryRouteImport.update({
+    id: '/history',
+    path: '/history',
+    getParentRoute: () => AuthenticatedImportsRoute,
+  } as any)
+const AuthenticatedImportsPackageRoute =
+  AuthenticatedImportsPackageRouteImport.update({
+    id: '/$package',
+    path: '/$package',
+    getParentRoute: () => AuthenticatedImportsRoute,
+  } as any)
+const AuthenticatedDictionaryValidateRoute =
+  AuthenticatedDictionaryValidateRouteImport.update({
+    id: '/validate',
+    path: '/validate',
+    getParentRoute: () => AuthenticatedDictionaryRoute,
+  } as any)
+const AuthenticatedDictionaryPackageRoute =
+  AuthenticatedDictionaryPackageRouteImport.update({
+    id: '/$package',
+    path: '/$package',
+    getParentRoute: () => AuthenticatedDictionaryRoute,
+  } as any)
+const AuthenticatedCreditWatchlistRoute =
+  AuthenticatedCreditWatchlistRouteImport.update({
+    id: '/watchlist',
+    path: '/watchlist',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedCreditReportsRoute =
+  AuthenticatedCreditReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedCreditPortfolioRoute =
+  AuthenticatedCreditPortfolioRouteImport.update({
+    id: '/portfolio',
+    path: '/portfolio',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedCreditLoansRoute =
+  AuthenticatedCreditLoansRouteImport.update({
+    id: '/loans',
+    path: '/loans',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedCreditEarlyWarningRoute =
+  AuthenticatedCreditEarlyWarningRouteImport.update({
+    id: '/early-warning',
+    path: '/early-warning',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedCreditCollateralRoute =
+  AuthenticatedCreditCollateralRouteImport.update({
+    id: '/collateral',
+    path: '/collateral',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedCreditBorrowersRoute =
+  AuthenticatedCreditBorrowersRouteImport.update({
+    id: '/borrowers',
+    path: '/borrowers',
+    getParentRoute: () => AuthenticatedCreditRoute,
+  } as any)
+const AuthenticatedComplianceViolationsRoute =
+  AuthenticatedComplianceViolationsRouteImport.update({
+    id: '/violations',
+    path: '/violations',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedComplianceTasksRoute =
+  AuthenticatedComplianceTasksRouteImport.update({
+    id: '/tasks',
+    path: '/tasks',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedComplianceRulesRoute =
+  AuthenticatedComplianceRulesRouteImport.update({
+    id: '/rules',
+    path: '/rules',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedComplianceReportsRoute =
+  AuthenticatedComplianceReportsRouteImport.update({
+    id: '/reports',
+    path: '/reports',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedComplianceMonitoringRoute =
+  AuthenticatedComplianceMonitoringRouteImport.update({
+    id: '/monitoring',
+    path: '/monitoring',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedComplianceAuditRoute =
+  AuthenticatedComplianceAuditRouteImport.update({
+    id: '/audit',
+    path: '/audit',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedComplianceApprovalsRoute =
+  AuthenticatedComplianceApprovalsRouteImport.update({
+    id: '/approvals',
+    path: '/approvals',
+    getParentRoute: () => AuthenticatedComplianceRoute,
+  } as any)
+const AuthenticatedAssetsCategoryRoute =
+  AuthenticatedAssetsCategoryRouteImport.update({
+    id: '/assets/$category',
+    path: '/assets/$category',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAiRiskRoute = AuthenticatedAiRiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => AuthenticatedAiRoute,
+} as any)
+const AuthenticatedAiRecommendationsRoute =
+  AuthenticatedAiRecommendationsRouteImport.update({
+    id: '/recommendations',
+    path: '/recommendations',
+    getParentRoute: () => AuthenticatedAiRoute,
+  } as any)
+const AuthenticatedAiQueryRoute = AuthenticatedAiQueryRouteImport.update({
+  id: '/query',
+  path: '/query',
+  getParentRoute: () => AuthenticatedAiRoute,
+} as any)
+const AuthenticatedAiPredictionRoute =
+  AuthenticatedAiPredictionRouteImport.update({
+    id: '/prediction',
+    path: '/prediction',
+    getParentRoute: () => AuthenticatedAiRoute,
+  } as any)
+const AuthenticatedAiLiquidityRoute =
+  AuthenticatedAiLiquidityRouteImport.update({
+    id: '/liquidity',
+    path: '/liquidity',
+    getParentRoute: () => AuthenticatedAiRoute,
+  } as any)
+const AuthenticatedAiFraudRoute = AuthenticatedAiFraudRouteImport.update({
+  id: '/fraud',
+  path: '/fraud',
+  getParentRoute: () => AuthenticatedAiRoute,
+} as any)
+const AuthenticatedAiComplianceRoute =
+  AuthenticatedAiComplianceRouteImport.update({
+    id: '/compliance',
+    path: '/compliance',
+    getParentRoute: () => AuthenticatedAiRoute,
+  } as any)
+const AuthenticatedAiCapitalRoute = AuthenticatedAiCapitalRouteImport.update({
+  id: '/capital',
+  path: '/capital',
+  getParentRoute: () => AuthenticatedAiRoute,
+} as any)
+const ApiPublicHooksWorkflowTickRoute =
+  ApiPublicHooksWorkflowTickRouteImport.update({
+    id: '/api/public/hooks/workflow-tick',
+    path: '/api/public/hooks/workflow-tick',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ApiPublicCreditPortfolioSummaryRoute =
+  ApiPublicCreditPortfolioSummaryRouteImport.update({
+    id: '/api/public/credit/portfolio-summary',
+    path: '/api/public/credit/portfolio-summary',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AuthenticatedComplianceTasksIdRoute =
+  AuthenticatedComplianceTasksIdRouteImport.update({
+    id: '/$id',
+    path: '/$id',
+    getParentRoute: () => AuthenticatedComplianceTasksRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/ai': typeof AuthenticatedAiRouteWithChildren
+  '/approvals': typeof AuthenticatedApprovalsRoute
+  '/compliance': typeof AuthenticatedComplianceRouteWithChildren
+  '/credit': typeof AuthenticatedCreditRouteWithChildren
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/dictionary': typeof AuthenticatedDictionaryRouteWithChildren
+  '/history': typeof AuthenticatedHistoryRoute
+  '/imports': typeof AuthenticatedImportsRouteWithChildren
+  '/liquidity': typeof AuthenticatedLiquidityRouteWithChildren
+  '/market': typeof AuthenticatedMarketRouteWithChildren
+  '/operational': typeof AuthenticatedOperationalRouteWithChildren
+  '/reporting': typeof AuthenticatedReportingRouteWithChildren
+  '/reports': typeof AuthenticatedReportsRoute
+  '/rules': typeof AuthenticatedRulesRoute
+  '/stress': typeof AuthenticatedStressRouteWithChildren
+  '/workflow': typeof AuthenticatedWorkflowRouteWithChildren
+  '/ai/capital': typeof AuthenticatedAiCapitalRoute
+  '/ai/compliance': typeof AuthenticatedAiComplianceRoute
+  '/ai/fraud': typeof AuthenticatedAiFraudRoute
+  '/ai/liquidity': typeof AuthenticatedAiLiquidityRoute
+  '/ai/prediction': typeof AuthenticatedAiPredictionRoute
+  '/ai/query': typeof AuthenticatedAiQueryRoute
+  '/ai/recommendations': typeof AuthenticatedAiRecommendationsRoute
+  '/ai/risk': typeof AuthenticatedAiRiskRoute
+  '/assets/$category': typeof AuthenticatedAssetsCategoryRoute
+  '/compliance/approvals': typeof AuthenticatedComplianceApprovalsRoute
+  '/compliance/audit': typeof AuthenticatedComplianceAuditRoute
+  '/compliance/monitoring': typeof AuthenticatedComplianceMonitoringRoute
+  '/compliance/reports': typeof AuthenticatedComplianceReportsRoute
+  '/compliance/rules': typeof AuthenticatedComplianceRulesRoute
+  '/compliance/tasks': typeof AuthenticatedComplianceTasksRouteWithChildren
+  '/compliance/violations': typeof AuthenticatedComplianceViolationsRoute
+  '/credit/borrowers': typeof AuthenticatedCreditBorrowersRoute
+  '/credit/collateral': typeof AuthenticatedCreditCollateralRoute
+  '/credit/early-warning': typeof AuthenticatedCreditEarlyWarningRoute
+  '/credit/loans': typeof AuthenticatedCreditLoansRoute
+  '/credit/portfolio': typeof AuthenticatedCreditPortfolioRoute
+  '/credit/reports': typeof AuthenticatedCreditReportsRoute
+  '/credit/watchlist': typeof AuthenticatedCreditWatchlistRoute
+  '/dictionary/$package': typeof AuthenticatedDictionaryPackageRoute
+  '/dictionary/validate': typeof AuthenticatedDictionaryValidateRoute
+  '/imports/$package': typeof AuthenticatedImportsPackageRoute
+  '/imports/history': typeof AuthenticatedImportsHistoryRoute
+  '/liquidity/buckets': typeof AuthenticatedLiquidityBucketsRoute
+  '/liquidity/cashflow': typeof AuthenticatedLiquidityCashflowRoute
+  '/liquidity/funding': typeof AuthenticatedLiquidityFundingRoute
+  '/liquidity/gap': typeof AuthenticatedLiquidityGapRoute
+  '/liquidity/hqla': typeof AuthenticatedLiquidityHqlaRoute
+  '/liquidity/lcr': typeof AuthenticatedLiquidityLcrRoute
+  '/liquidity/nsfr': typeof AuthenticatedLiquidityNsfrRoute
+  '/liquidity/reports': typeof AuthenticatedLiquidityReportsRoute
+  '/liquidity/stress': typeof AuthenticatedLiquidityStressRoute
+  '/market/commodity': typeof AuthenticatedMarketCommodityRoute
+  '/market/duration': typeof AuthenticatedMarketDurationRoute
+  '/market/equity': typeof AuthenticatedMarketEquityRoute
+  '/market/fx': typeof AuthenticatedMarketFxRoute
+  '/market/ir': typeof AuthenticatedMarketIrRoute
+  '/market/positions': typeof AuthenticatedMarketPositionsRoute
+  '/market/reports': typeof AuthenticatedMarketReportsRoute
+  '/market/scenarios': typeof AuthenticatedMarketScenariosRoute
+  '/market/sensitivity': typeof AuthenticatedMarketSensitivityRoute
+  '/market/var': typeof AuthenticatedMarketVarRoute
+  '/operational/bcp': typeof AuthenticatedOperationalBcpRoute
+  '/operational/cyber': typeof AuthenticatedOperationalCyberRoute
+  '/operational/fraud': typeof AuthenticatedOperationalFraudRoute
+  '/operational/incidents': typeof AuthenticatedOperationalIncidentsRoute
+  '/operational/kris': typeof AuthenticatedOperationalKrisRoute
+  '/operational/losses': typeof AuthenticatedOperationalLossesRoute
+  '/operational/rcsa': typeof AuthenticatedOperationalRcsaRoute
+  '/operational/register': typeof AuthenticatedOperationalRegisterRoute
+  '/operational/reports': typeof AuthenticatedOperationalReportsRoute
+  '/reporting/$key': typeof AuthenticatedReportingKeyRoute
+  '/reporting/history': typeof AuthenticatedReportingHistoryRoute
+  '/reporting/schedules': typeof AuthenticatedReportingSchedulesRoute
+  '/stress/$id': typeof AuthenticatedStressIdRoute
+  '/stress/builder': typeof AuthenticatedStressBuilderRoute
+  '/stress/reports': typeof AuthenticatedStressReportsRoute
+  '/workflow/approvals': typeof AuthenticatedWorkflowApprovalsRoute
+  '/workflow/audit': typeof AuthenticatedWorkflowAuditRoute
+  '/workflow/notifications': typeof AuthenticatedWorkflowNotificationsRoute
+  '/workflow/preferences': typeof AuthenticatedWorkflowPreferencesRoute
+  '/workflow/rules': typeof AuthenticatedWorkflowRulesRoute
+  '/workflow/tasks': typeof AuthenticatedWorkflowTasksRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/ready': typeof ApiPublicReadyRoute
+  '/ai/': typeof AuthenticatedAiIndexRoute
+  '/compliance/': typeof AuthenticatedComplianceIndexRoute
+  '/credit/': typeof AuthenticatedCreditIndexRoute
+  '/dictionary/': typeof AuthenticatedDictionaryIndexRoute
+  '/imports/': typeof AuthenticatedImportsIndexRoute
+  '/liquidity/': typeof AuthenticatedLiquidityIndexRoute
+  '/market/': typeof AuthenticatedMarketIndexRoute
+  '/operational/': typeof AuthenticatedOperationalIndexRoute
+  '/reporting/': typeof AuthenticatedReportingIndexRoute
+  '/stress/': typeof AuthenticatedStressIndexRoute
+  '/workflow/': typeof AuthenticatedWorkflowIndexRoute
+  '/compliance/tasks/$id': typeof AuthenticatedComplianceTasksIdRoute
+  '/api/public/credit/portfolio-summary': typeof ApiPublicCreditPortfolioSummaryRoute
+  '/api/public/hooks/workflow-tick': typeof ApiPublicHooksWorkflowTickRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/approvals': typeof AuthenticatedApprovalsRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/history': typeof AuthenticatedHistoryRoute
+  '/reports': typeof AuthenticatedReportsRoute
+  '/rules': typeof AuthenticatedRulesRoute
+  '/ai/capital': typeof AuthenticatedAiCapitalRoute
+  '/ai/compliance': typeof AuthenticatedAiComplianceRoute
+  '/ai/fraud': typeof AuthenticatedAiFraudRoute
+  '/ai/liquidity': typeof AuthenticatedAiLiquidityRoute
+  '/ai/prediction': typeof AuthenticatedAiPredictionRoute
+  '/ai/query': typeof AuthenticatedAiQueryRoute
+  '/ai/recommendations': typeof AuthenticatedAiRecommendationsRoute
+  '/ai/risk': typeof AuthenticatedAiRiskRoute
+  '/assets/$category': typeof AuthenticatedAssetsCategoryRoute
+  '/compliance/approvals': typeof AuthenticatedComplianceApprovalsRoute
+  '/compliance/audit': typeof AuthenticatedComplianceAuditRoute
+  '/compliance/monitoring': typeof AuthenticatedComplianceMonitoringRoute
+  '/compliance/reports': typeof AuthenticatedComplianceReportsRoute
+  '/compliance/rules': typeof AuthenticatedComplianceRulesRoute
+  '/compliance/tasks': typeof AuthenticatedComplianceTasksRouteWithChildren
+  '/compliance/violations': typeof AuthenticatedComplianceViolationsRoute
+  '/credit/borrowers': typeof AuthenticatedCreditBorrowersRoute
+  '/credit/collateral': typeof AuthenticatedCreditCollateralRoute
+  '/credit/early-warning': typeof AuthenticatedCreditEarlyWarningRoute
+  '/credit/loans': typeof AuthenticatedCreditLoansRoute
+  '/credit/portfolio': typeof AuthenticatedCreditPortfolioRoute
+  '/credit/reports': typeof AuthenticatedCreditReportsRoute
+  '/credit/watchlist': typeof AuthenticatedCreditWatchlistRoute
+  '/dictionary/$package': typeof AuthenticatedDictionaryPackageRoute
+  '/dictionary/validate': typeof AuthenticatedDictionaryValidateRoute
+  '/imports/$package': typeof AuthenticatedImportsPackageRoute
+  '/imports/history': typeof AuthenticatedImportsHistoryRoute
+  '/liquidity/buckets': typeof AuthenticatedLiquidityBucketsRoute
+  '/liquidity/cashflow': typeof AuthenticatedLiquidityCashflowRoute
+  '/liquidity/funding': typeof AuthenticatedLiquidityFundingRoute
+  '/liquidity/gap': typeof AuthenticatedLiquidityGapRoute
+  '/liquidity/hqla': typeof AuthenticatedLiquidityHqlaRoute
+  '/liquidity/lcr': typeof AuthenticatedLiquidityLcrRoute
+  '/liquidity/nsfr': typeof AuthenticatedLiquidityNsfrRoute
+  '/liquidity/reports': typeof AuthenticatedLiquidityReportsRoute
+  '/liquidity/stress': typeof AuthenticatedLiquidityStressRoute
+  '/market/commodity': typeof AuthenticatedMarketCommodityRoute
+  '/market/duration': typeof AuthenticatedMarketDurationRoute
+  '/market/equity': typeof AuthenticatedMarketEquityRoute
+  '/market/fx': typeof AuthenticatedMarketFxRoute
+  '/market/ir': typeof AuthenticatedMarketIrRoute
+  '/market/positions': typeof AuthenticatedMarketPositionsRoute
+  '/market/reports': typeof AuthenticatedMarketReportsRoute
+  '/market/scenarios': typeof AuthenticatedMarketScenariosRoute
+  '/market/sensitivity': typeof AuthenticatedMarketSensitivityRoute
+  '/market/var': typeof AuthenticatedMarketVarRoute
+  '/operational/bcp': typeof AuthenticatedOperationalBcpRoute
+  '/operational/cyber': typeof AuthenticatedOperationalCyberRoute
+  '/operational/fraud': typeof AuthenticatedOperationalFraudRoute
+  '/operational/incidents': typeof AuthenticatedOperationalIncidentsRoute
+  '/operational/kris': typeof AuthenticatedOperationalKrisRoute
+  '/operational/losses': typeof AuthenticatedOperationalLossesRoute
+  '/operational/rcsa': typeof AuthenticatedOperationalRcsaRoute
+  '/operational/register': typeof AuthenticatedOperationalRegisterRoute
+  '/operational/reports': typeof AuthenticatedOperationalReportsRoute
+  '/reporting/$key': typeof AuthenticatedReportingKeyRoute
+  '/reporting/history': typeof AuthenticatedReportingHistoryRoute
+  '/reporting/schedules': typeof AuthenticatedReportingSchedulesRoute
+  '/stress/$id': typeof AuthenticatedStressIdRoute
+  '/stress/builder': typeof AuthenticatedStressBuilderRoute
+  '/stress/reports': typeof AuthenticatedStressReportsRoute
+  '/workflow/approvals': typeof AuthenticatedWorkflowApprovalsRoute
+  '/workflow/audit': typeof AuthenticatedWorkflowAuditRoute
+  '/workflow/notifications': typeof AuthenticatedWorkflowNotificationsRoute
+  '/workflow/preferences': typeof AuthenticatedWorkflowPreferencesRoute
+  '/workflow/rules': typeof AuthenticatedWorkflowRulesRoute
+  '/workflow/tasks': typeof AuthenticatedWorkflowTasksRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/ready': typeof ApiPublicReadyRoute
+  '/ai': typeof AuthenticatedAiIndexRoute
+  '/compliance': typeof AuthenticatedComplianceIndexRoute
+  '/credit': typeof AuthenticatedCreditIndexRoute
+  '/dictionary': typeof AuthenticatedDictionaryIndexRoute
+  '/imports': typeof AuthenticatedImportsIndexRoute
+  '/liquidity': typeof AuthenticatedLiquidityIndexRoute
+  '/market': typeof AuthenticatedMarketIndexRoute
+  '/operational': typeof AuthenticatedOperationalIndexRoute
+  '/reporting': typeof AuthenticatedReportingIndexRoute
+  '/stress': typeof AuthenticatedStressIndexRoute
+  '/workflow': typeof AuthenticatedWorkflowIndexRoute
+  '/compliance/tasks/$id': typeof AuthenticatedComplianceTasksIdRoute
+  '/api/public/credit/portfolio-summary': typeof ApiPublicCreditPortfolioSummaryRoute
+  '/api/public/hooks/workflow-tick': typeof ApiPublicHooksWorkflowTickRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/_authenticated/ai': typeof AuthenticatedAiRouteWithChildren
+  '/_authenticated/approvals': typeof AuthenticatedApprovalsRoute
+  '/_authenticated/compliance': typeof AuthenticatedComplianceRouteWithChildren
+  '/_authenticated/credit': typeof AuthenticatedCreditRouteWithChildren
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/dictionary': typeof AuthenticatedDictionaryRouteWithChildren
+  '/_authenticated/history': typeof AuthenticatedHistoryRoute
+  '/_authenticated/imports': typeof AuthenticatedImportsRouteWithChildren
+  '/_authenticated/liquidity': typeof AuthenticatedLiquidityRouteWithChildren
+  '/_authenticated/market': typeof AuthenticatedMarketRouteWithChildren
+  '/_authenticated/operational': typeof AuthenticatedOperationalRouteWithChildren
+  '/_authenticated/reporting': typeof AuthenticatedReportingRouteWithChildren
+  '/_authenticated/reports': typeof AuthenticatedReportsRoute
+  '/_authenticated/rules': typeof AuthenticatedRulesRoute
+  '/_authenticated/stress': typeof AuthenticatedStressRouteWithChildren
+  '/_authenticated/workflow': typeof AuthenticatedWorkflowRouteWithChildren
+  '/_authenticated/ai/capital': typeof AuthenticatedAiCapitalRoute
+  '/_authenticated/ai/compliance': typeof AuthenticatedAiComplianceRoute
+  '/_authenticated/ai/fraud': typeof AuthenticatedAiFraudRoute
+  '/_authenticated/ai/liquidity': typeof AuthenticatedAiLiquidityRoute
+  '/_authenticated/ai/prediction': typeof AuthenticatedAiPredictionRoute
+  '/_authenticated/ai/query': typeof AuthenticatedAiQueryRoute
+  '/_authenticated/ai/recommendations': typeof AuthenticatedAiRecommendationsRoute
+  '/_authenticated/ai/risk': typeof AuthenticatedAiRiskRoute
+  '/_authenticated/assets/$category': typeof AuthenticatedAssetsCategoryRoute
+  '/_authenticated/compliance/approvals': typeof AuthenticatedComplianceApprovalsRoute
+  '/_authenticated/compliance/audit': typeof AuthenticatedComplianceAuditRoute
+  '/_authenticated/compliance/monitoring': typeof AuthenticatedComplianceMonitoringRoute
+  '/_authenticated/compliance/reports': typeof AuthenticatedComplianceReportsRoute
+  '/_authenticated/compliance/rules': typeof AuthenticatedComplianceRulesRoute
+  '/_authenticated/compliance/tasks': typeof AuthenticatedComplianceTasksRouteWithChildren
+  '/_authenticated/compliance/violations': typeof AuthenticatedComplianceViolationsRoute
+  '/_authenticated/credit/borrowers': typeof AuthenticatedCreditBorrowersRoute
+  '/_authenticated/credit/collateral': typeof AuthenticatedCreditCollateralRoute
+  '/_authenticated/credit/early-warning': typeof AuthenticatedCreditEarlyWarningRoute
+  '/_authenticated/credit/loans': typeof AuthenticatedCreditLoansRoute
+  '/_authenticated/credit/portfolio': typeof AuthenticatedCreditPortfolioRoute
+  '/_authenticated/credit/reports': typeof AuthenticatedCreditReportsRoute
+  '/_authenticated/credit/watchlist': typeof AuthenticatedCreditWatchlistRoute
+  '/_authenticated/dictionary/$package': typeof AuthenticatedDictionaryPackageRoute
+  '/_authenticated/dictionary/validate': typeof AuthenticatedDictionaryValidateRoute
+  '/_authenticated/imports/$package': typeof AuthenticatedImportsPackageRoute
+  '/_authenticated/imports/history': typeof AuthenticatedImportsHistoryRoute
+  '/_authenticated/liquidity/buckets': typeof AuthenticatedLiquidityBucketsRoute
+  '/_authenticated/liquidity/cashflow': typeof AuthenticatedLiquidityCashflowRoute
+  '/_authenticated/liquidity/funding': typeof AuthenticatedLiquidityFundingRoute
+  '/_authenticated/liquidity/gap': typeof AuthenticatedLiquidityGapRoute
+  '/_authenticated/liquidity/hqla': typeof AuthenticatedLiquidityHqlaRoute
+  '/_authenticated/liquidity/lcr': typeof AuthenticatedLiquidityLcrRoute
+  '/_authenticated/liquidity/nsfr': typeof AuthenticatedLiquidityNsfrRoute
+  '/_authenticated/liquidity/reports': typeof AuthenticatedLiquidityReportsRoute
+  '/_authenticated/liquidity/stress': typeof AuthenticatedLiquidityStressRoute
+  '/_authenticated/market/commodity': typeof AuthenticatedMarketCommodityRoute
+  '/_authenticated/market/duration': typeof AuthenticatedMarketDurationRoute
+  '/_authenticated/market/equity': typeof AuthenticatedMarketEquityRoute
+  '/_authenticated/market/fx': typeof AuthenticatedMarketFxRoute
+  '/_authenticated/market/ir': typeof AuthenticatedMarketIrRoute
+  '/_authenticated/market/positions': typeof AuthenticatedMarketPositionsRoute
+  '/_authenticated/market/reports': typeof AuthenticatedMarketReportsRoute
+  '/_authenticated/market/scenarios': typeof AuthenticatedMarketScenariosRoute
+  '/_authenticated/market/sensitivity': typeof AuthenticatedMarketSensitivityRoute
+  '/_authenticated/market/var': typeof AuthenticatedMarketVarRoute
+  '/_authenticated/operational/bcp': typeof AuthenticatedOperationalBcpRoute
+  '/_authenticated/operational/cyber': typeof AuthenticatedOperationalCyberRoute
+  '/_authenticated/operational/fraud': typeof AuthenticatedOperationalFraudRoute
+  '/_authenticated/operational/incidents': typeof AuthenticatedOperationalIncidentsRoute
+  '/_authenticated/operational/kris': typeof AuthenticatedOperationalKrisRoute
+  '/_authenticated/operational/losses': typeof AuthenticatedOperationalLossesRoute
+  '/_authenticated/operational/rcsa': typeof AuthenticatedOperationalRcsaRoute
+  '/_authenticated/operational/register': typeof AuthenticatedOperationalRegisterRoute
+  '/_authenticated/operational/reports': typeof AuthenticatedOperationalReportsRoute
+  '/_authenticated/reporting/$key': typeof AuthenticatedReportingKeyRoute
+  '/_authenticated/reporting/history': typeof AuthenticatedReportingHistoryRoute
+  '/_authenticated/reporting/schedules': typeof AuthenticatedReportingSchedulesRoute
+  '/_authenticated/stress/$id': typeof AuthenticatedStressIdRoute
+  '/_authenticated/stress/builder': typeof AuthenticatedStressBuilderRoute
+  '/_authenticated/stress/reports': typeof AuthenticatedStressReportsRoute
+  '/_authenticated/workflow/approvals': typeof AuthenticatedWorkflowApprovalsRoute
+  '/_authenticated/workflow/audit': typeof AuthenticatedWorkflowAuditRoute
+  '/_authenticated/workflow/notifications': typeof AuthenticatedWorkflowNotificationsRoute
+  '/_authenticated/workflow/preferences': typeof AuthenticatedWorkflowPreferencesRoute
+  '/_authenticated/workflow/rules': typeof AuthenticatedWorkflowRulesRoute
+  '/_authenticated/workflow/tasks': typeof AuthenticatedWorkflowTasksRoute
+  '/api/public/health': typeof ApiPublicHealthRoute
+  '/api/public/ready': typeof ApiPublicReadyRoute
+  '/_authenticated/ai/': typeof AuthenticatedAiIndexRoute
+  '/_authenticated/compliance/': typeof AuthenticatedComplianceIndexRoute
+  '/_authenticated/credit/': typeof AuthenticatedCreditIndexRoute
+  '/_authenticated/dictionary/': typeof AuthenticatedDictionaryIndexRoute
+  '/_authenticated/imports/': typeof AuthenticatedImportsIndexRoute
+  '/_authenticated/liquidity/': typeof AuthenticatedLiquidityIndexRoute
+  '/_authenticated/market/': typeof AuthenticatedMarketIndexRoute
+  '/_authenticated/operational/': typeof AuthenticatedOperationalIndexRoute
+  '/_authenticated/reporting/': typeof AuthenticatedReportingIndexRoute
+  '/_authenticated/stress/': typeof AuthenticatedStressIndexRoute
+  '/_authenticated/workflow/': typeof AuthenticatedWorkflowIndexRoute
+  '/_authenticated/compliance/tasks/$id': typeof AuthenticatedComplianceTasksIdRoute
+  '/api/public/credit/portfolio-summary': typeof ApiPublicCreditPortfolioSummaryRoute
+  '/api/public/hooks/workflow-tick': typeof ApiPublicHooksWorkflowTickRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/ai'
+    | '/approvals'
+    | '/compliance'
+    | '/credit'
+    | '/dashboard'
+    | '/dictionary'
+    | '/history'
+    | '/imports'
+    | '/liquidity'
+    | '/market'
+    | '/operational'
+    | '/reporting'
+    | '/reports'
+    | '/rules'
+    | '/stress'
+    | '/workflow'
+    | '/ai/capital'
+    | '/ai/compliance'
+    | '/ai/fraud'
+    | '/ai/liquidity'
+    | '/ai/prediction'
+    | '/ai/query'
+    | '/ai/recommendations'
+    | '/ai/risk'
+    | '/assets/$category'
+    | '/compliance/approvals'
+    | '/compliance/audit'
+    | '/compliance/monitoring'
+    | '/compliance/reports'
+    | '/compliance/rules'
+    | '/compliance/tasks'
+    | '/compliance/violations'
+    | '/credit/borrowers'
+    | '/credit/collateral'
+    | '/credit/early-warning'
+    | '/credit/loans'
+    | '/credit/portfolio'
+    | '/credit/reports'
+    | '/credit/watchlist'
+    | '/dictionary/$package'
+    | '/dictionary/validate'
+    | '/imports/$package'
+    | '/imports/history'
+    | '/liquidity/buckets'
+    | '/liquidity/cashflow'
+    | '/liquidity/funding'
+    | '/liquidity/gap'
+    | '/liquidity/hqla'
+    | '/liquidity/lcr'
+    | '/liquidity/nsfr'
+    | '/liquidity/reports'
+    | '/liquidity/stress'
+    | '/market/commodity'
+    | '/market/duration'
+    | '/market/equity'
+    | '/market/fx'
+    | '/market/ir'
+    | '/market/positions'
+    | '/market/reports'
+    | '/market/scenarios'
+    | '/market/sensitivity'
+    | '/market/var'
+    | '/operational/bcp'
+    | '/operational/cyber'
+    | '/operational/fraud'
+    | '/operational/incidents'
+    | '/operational/kris'
+    | '/operational/losses'
+    | '/operational/rcsa'
+    | '/operational/register'
+    | '/operational/reports'
+    | '/reporting/$key'
+    | '/reporting/history'
+    | '/reporting/schedules'
+    | '/stress/$id'
+    | '/stress/builder'
+    | '/stress/reports'
+    | '/workflow/approvals'
+    | '/workflow/audit'
+    | '/workflow/notifications'
+    | '/workflow/preferences'
+    | '/workflow/rules'
+    | '/workflow/tasks'
+    | '/api/public/health'
+    | '/api/public/ready'
+    | '/ai/'
+    | '/compliance/'
+    | '/credit/'
+    | '/dictionary/'
+    | '/imports/'
+    | '/liquidity/'
+    | '/market/'
+    | '/operational/'
+    | '/reporting/'
+    | '/stress/'
+    | '/workflow/'
+    | '/compliance/tasks/$id'
+    | '/api/public/credit/portfolio-summary'
+    | '/api/public/hooks/workflow-tick'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/approvals'
+    | '/dashboard'
+    | '/history'
+    | '/reports'
+    | '/rules'
+    | '/ai/capital'
+    | '/ai/compliance'
+    | '/ai/fraud'
+    | '/ai/liquidity'
+    | '/ai/prediction'
+    | '/ai/query'
+    | '/ai/recommendations'
+    | '/ai/risk'
+    | '/assets/$category'
+    | '/compliance/approvals'
+    | '/compliance/audit'
+    | '/compliance/monitoring'
+    | '/compliance/reports'
+    | '/compliance/rules'
+    | '/compliance/tasks'
+    | '/compliance/violations'
+    | '/credit/borrowers'
+    | '/credit/collateral'
+    | '/credit/early-warning'
+    | '/credit/loans'
+    | '/credit/portfolio'
+    | '/credit/reports'
+    | '/credit/watchlist'
+    | '/dictionary/$package'
+    | '/dictionary/validate'
+    | '/imports/$package'
+    | '/imports/history'
+    | '/liquidity/buckets'
+    | '/liquidity/cashflow'
+    | '/liquidity/funding'
+    | '/liquidity/gap'
+    | '/liquidity/hqla'
+    | '/liquidity/lcr'
+    | '/liquidity/nsfr'
+    | '/liquidity/reports'
+    | '/liquidity/stress'
+    | '/market/commodity'
+    | '/market/duration'
+    | '/market/equity'
+    | '/market/fx'
+    | '/market/ir'
+    | '/market/positions'
+    | '/market/reports'
+    | '/market/scenarios'
+    | '/market/sensitivity'
+    | '/market/var'
+    | '/operational/bcp'
+    | '/operational/cyber'
+    | '/operational/fraud'
+    | '/operational/incidents'
+    | '/operational/kris'
+    | '/operational/losses'
+    | '/operational/rcsa'
+    | '/operational/register'
+    | '/operational/reports'
+    | '/reporting/$key'
+    | '/reporting/history'
+    | '/reporting/schedules'
+    | '/stress/$id'
+    | '/stress/builder'
+    | '/stress/reports'
+    | '/workflow/approvals'
+    | '/workflow/audit'
+    | '/workflow/notifications'
+    | '/workflow/preferences'
+    | '/workflow/rules'
+    | '/workflow/tasks'
+    | '/api/public/health'
+    | '/api/public/ready'
+    | '/ai'
+    | '/compliance'
+    | '/credit'
+    | '/dictionary'
+    | '/imports'
+    | '/liquidity'
+    | '/market'
+    | '/operational'
+    | '/reporting'
+    | '/stress'
+    | '/workflow'
+    | '/compliance/tasks/$id'
+    | '/api/public/credit/portfolio-summary'
+    | '/api/public/hooks/workflow-tick'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/sitemap.xml'
+    | '/_authenticated/ai'
+    | '/_authenticated/approvals'
+    | '/_authenticated/compliance'
+    | '/_authenticated/credit'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/dictionary'
+    | '/_authenticated/history'
+    | '/_authenticated/imports'
+    | '/_authenticated/liquidity'
+    | '/_authenticated/market'
+    | '/_authenticated/operational'
+    | '/_authenticated/reporting'
+    | '/_authenticated/reports'
+    | '/_authenticated/rules'
+    | '/_authenticated/stress'
+    | '/_authenticated/workflow'
+    | '/_authenticated/ai/capital'
+    | '/_authenticated/ai/compliance'
+    | '/_authenticated/ai/fraud'
+    | '/_authenticated/ai/liquidity'
+    | '/_authenticated/ai/prediction'
+    | '/_authenticated/ai/query'
+    | '/_authenticated/ai/recommendations'
+    | '/_authenticated/ai/risk'
+    | '/_authenticated/assets/$category'
+    | '/_authenticated/compliance/approvals'
+    | '/_authenticated/compliance/audit'
+    | '/_authenticated/compliance/monitoring'
+    | '/_authenticated/compliance/reports'
+    | '/_authenticated/compliance/rules'
+    | '/_authenticated/compliance/tasks'
+    | '/_authenticated/compliance/violations'
+    | '/_authenticated/credit/borrowers'
+    | '/_authenticated/credit/collateral'
+    | '/_authenticated/credit/early-warning'
+    | '/_authenticated/credit/loans'
+    | '/_authenticated/credit/portfolio'
+    | '/_authenticated/credit/reports'
+    | '/_authenticated/credit/watchlist'
+    | '/_authenticated/dictionary/$package'
+    | '/_authenticated/dictionary/validate'
+    | '/_authenticated/imports/$package'
+    | '/_authenticated/imports/history'
+    | '/_authenticated/liquidity/buckets'
+    | '/_authenticated/liquidity/cashflow'
+    | '/_authenticated/liquidity/funding'
+    | '/_authenticated/liquidity/gap'
+    | '/_authenticated/liquidity/hqla'
+    | '/_authenticated/liquidity/lcr'
+    | '/_authenticated/liquidity/nsfr'
+    | '/_authenticated/liquidity/reports'
+    | '/_authenticated/liquidity/stress'
+    | '/_authenticated/market/commodity'
+    | '/_authenticated/market/duration'
+    | '/_authenticated/market/equity'
+    | '/_authenticated/market/fx'
+    | '/_authenticated/market/ir'
+    | '/_authenticated/market/positions'
+    | '/_authenticated/market/reports'
+    | '/_authenticated/market/scenarios'
+    | '/_authenticated/market/sensitivity'
+    | '/_authenticated/market/var'
+    | '/_authenticated/operational/bcp'
+    | '/_authenticated/operational/cyber'
+    | '/_authenticated/operational/fraud'
+    | '/_authenticated/operational/incidents'
+    | '/_authenticated/operational/kris'
+    | '/_authenticated/operational/losses'
+    | '/_authenticated/operational/rcsa'
+    | '/_authenticated/operational/register'
+    | '/_authenticated/operational/reports'
+    | '/_authenticated/reporting/$key'
+    | '/_authenticated/reporting/history'
+    | '/_authenticated/reporting/schedules'
+    | '/_authenticated/stress/$id'
+    | '/_authenticated/stress/builder'
+    | '/_authenticated/stress/reports'
+    | '/_authenticated/workflow/approvals'
+    | '/_authenticated/workflow/audit'
+    | '/_authenticated/workflow/notifications'
+    | '/_authenticated/workflow/preferences'
+    | '/_authenticated/workflow/rules'
+    | '/_authenticated/workflow/tasks'
+    | '/api/public/health'
+    | '/api/public/ready'
+    | '/_authenticated/ai/'
+    | '/_authenticated/compliance/'
+    | '/_authenticated/credit/'
+    | '/_authenticated/dictionary/'
+    | '/_authenticated/imports/'
+    | '/_authenticated/liquidity/'
+    | '/_authenticated/market/'
+    | '/_authenticated/operational/'
+    | '/_authenticated/reporting/'
+    | '/_authenticated/stress/'
+    | '/_authenticated/workflow/'
+    | '/_authenticated/compliance/tasks/$id'
+    | '/api/public/credit/portfolio-summary'
+    | '/api/public/hooks/workflow-tick'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  ApiPublicHealthRoute: typeof ApiPublicHealthRoute
+  ApiPublicReadyRoute: typeof ApiPublicReadyRoute
+  ApiPublicCreditPortfolioSummaryRoute: typeof ApiPublicCreditPortfolioSummaryRoute
+  ApiPublicHooksWorkflowTickRoute: typeof ApiPublicHooksWorkflowTickRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +1350,1046 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/workflow': {
+      id: '/_authenticated/workflow'
+      path: '/workflow'
+      fullPath: '/workflow'
+      preLoaderRoute: typeof AuthenticatedWorkflowRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/stress': {
+      id: '/_authenticated/stress'
+      path: '/stress'
+      fullPath: '/stress'
+      preLoaderRoute: typeof AuthenticatedStressRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/rules': {
+      id: '/_authenticated/rules'
+      path: '/rules'
+      fullPath: '/rules'
+      preLoaderRoute: typeof AuthenticatedRulesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reports': {
+      id: '/_authenticated/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof AuthenticatedReportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/reporting': {
+      id: '/_authenticated/reporting'
+      path: '/reporting'
+      fullPath: '/reporting'
+      preLoaderRoute: typeof AuthenticatedReportingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/operational': {
+      id: '/_authenticated/operational'
+      path: '/operational'
+      fullPath: '/operational'
+      preLoaderRoute: typeof AuthenticatedOperationalRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/market': {
+      id: '/_authenticated/market'
+      path: '/market'
+      fullPath: '/market'
+      preLoaderRoute: typeof AuthenticatedMarketRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/liquidity': {
+      id: '/_authenticated/liquidity'
+      path: '/liquidity'
+      fullPath: '/liquidity'
+      preLoaderRoute: typeof AuthenticatedLiquidityRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/imports': {
+      id: '/_authenticated/imports'
+      path: '/imports'
+      fullPath: '/imports'
+      preLoaderRoute: typeof AuthenticatedImportsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/history': {
+      id: '/_authenticated/history'
+      path: '/history'
+      fullPath: '/history'
+      preLoaderRoute: typeof AuthenticatedHistoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dictionary': {
+      id: '/_authenticated/dictionary'
+      path: '/dictionary'
+      fullPath: '/dictionary'
+      preLoaderRoute: typeof AuthenticatedDictionaryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/credit': {
+      id: '/_authenticated/credit'
+      path: '/credit'
+      fullPath: '/credit'
+      preLoaderRoute: typeof AuthenticatedCreditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/compliance': {
+      id: '/_authenticated/compliance'
+      path: '/compliance'
+      fullPath: '/compliance'
+      preLoaderRoute: typeof AuthenticatedComplianceRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/approvals': {
+      id: '/_authenticated/approvals'
+      path: '/approvals'
+      fullPath: '/approvals'
+      preLoaderRoute: typeof AuthenticatedApprovalsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/ai': {
+      id: '/_authenticated/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AuthenticatedAiRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/workflow/': {
+      id: '/_authenticated/workflow/'
+      path: '/'
+      fullPath: '/workflow/'
+      preLoaderRoute: typeof AuthenticatedWorkflowIndexRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/stress/': {
+      id: '/_authenticated/stress/'
+      path: '/'
+      fullPath: '/stress/'
+      preLoaderRoute: typeof AuthenticatedStressIndexRouteImport
+      parentRoute: typeof AuthenticatedStressRoute
+    }
+    '/_authenticated/reporting/': {
+      id: '/_authenticated/reporting/'
+      path: '/'
+      fullPath: '/reporting/'
+      preLoaderRoute: typeof AuthenticatedReportingIndexRouteImport
+      parentRoute: typeof AuthenticatedReportingRoute
+    }
+    '/_authenticated/operational/': {
+      id: '/_authenticated/operational/'
+      path: '/'
+      fullPath: '/operational/'
+      preLoaderRoute: typeof AuthenticatedOperationalIndexRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/market/': {
+      id: '/_authenticated/market/'
+      path: '/'
+      fullPath: '/market/'
+      preLoaderRoute: typeof AuthenticatedMarketIndexRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/liquidity/': {
+      id: '/_authenticated/liquidity/'
+      path: '/'
+      fullPath: '/liquidity/'
+      preLoaderRoute: typeof AuthenticatedLiquidityIndexRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/imports/': {
+      id: '/_authenticated/imports/'
+      path: '/'
+      fullPath: '/imports/'
+      preLoaderRoute: typeof AuthenticatedImportsIndexRouteImport
+      parentRoute: typeof AuthenticatedImportsRoute
+    }
+    '/_authenticated/dictionary/': {
+      id: '/_authenticated/dictionary/'
+      path: '/'
+      fullPath: '/dictionary/'
+      preLoaderRoute: typeof AuthenticatedDictionaryIndexRouteImport
+      parentRoute: typeof AuthenticatedDictionaryRoute
+    }
+    '/_authenticated/credit/': {
+      id: '/_authenticated/credit/'
+      path: '/'
+      fullPath: '/credit/'
+      preLoaderRoute: typeof AuthenticatedCreditIndexRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/compliance/': {
+      id: '/_authenticated/compliance/'
+      path: '/'
+      fullPath: '/compliance/'
+      preLoaderRoute: typeof AuthenticatedComplianceIndexRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/ai/': {
+      id: '/_authenticated/ai/'
+      path: '/'
+      fullPath: '/ai/'
+      preLoaderRoute: typeof AuthenticatedAiIndexRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/api/public/ready': {
+      id: '/api/public/ready'
+      path: '/api/public/ready'
+      fullPath: '/api/public/ready'
+      preLoaderRoute: typeof ApiPublicReadyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/health': {
+      id: '/api/public/health'
+      path: '/api/public/health'
+      fullPath: '/api/public/health'
+      preLoaderRoute: typeof ApiPublicHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/workflow/tasks': {
+      id: '/_authenticated/workflow/tasks'
+      path: '/tasks'
+      fullPath: '/workflow/tasks'
+      preLoaderRoute: typeof AuthenticatedWorkflowTasksRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/workflow/rules': {
+      id: '/_authenticated/workflow/rules'
+      path: '/rules'
+      fullPath: '/workflow/rules'
+      preLoaderRoute: typeof AuthenticatedWorkflowRulesRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/workflow/preferences': {
+      id: '/_authenticated/workflow/preferences'
+      path: '/preferences'
+      fullPath: '/workflow/preferences'
+      preLoaderRoute: typeof AuthenticatedWorkflowPreferencesRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/workflow/notifications': {
+      id: '/_authenticated/workflow/notifications'
+      path: '/notifications'
+      fullPath: '/workflow/notifications'
+      preLoaderRoute: typeof AuthenticatedWorkflowNotificationsRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/workflow/audit': {
+      id: '/_authenticated/workflow/audit'
+      path: '/audit'
+      fullPath: '/workflow/audit'
+      preLoaderRoute: typeof AuthenticatedWorkflowAuditRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/workflow/approvals': {
+      id: '/_authenticated/workflow/approvals'
+      path: '/approvals'
+      fullPath: '/workflow/approvals'
+      preLoaderRoute: typeof AuthenticatedWorkflowApprovalsRouteImport
+      parentRoute: typeof AuthenticatedWorkflowRoute
+    }
+    '/_authenticated/stress/reports': {
+      id: '/_authenticated/stress/reports'
+      path: '/reports'
+      fullPath: '/stress/reports'
+      preLoaderRoute: typeof AuthenticatedStressReportsRouteImport
+      parentRoute: typeof AuthenticatedStressRoute
+    }
+    '/_authenticated/stress/builder': {
+      id: '/_authenticated/stress/builder'
+      path: '/builder'
+      fullPath: '/stress/builder'
+      preLoaderRoute: typeof AuthenticatedStressBuilderRouteImport
+      parentRoute: typeof AuthenticatedStressRoute
+    }
+    '/_authenticated/stress/$id': {
+      id: '/_authenticated/stress/$id'
+      path: '/$id'
+      fullPath: '/stress/$id'
+      preLoaderRoute: typeof AuthenticatedStressIdRouteImport
+      parentRoute: typeof AuthenticatedStressRoute
+    }
+    '/_authenticated/reporting/schedules': {
+      id: '/_authenticated/reporting/schedules'
+      path: '/schedules'
+      fullPath: '/reporting/schedules'
+      preLoaderRoute: typeof AuthenticatedReportingSchedulesRouteImport
+      parentRoute: typeof AuthenticatedReportingRoute
+    }
+    '/_authenticated/reporting/history': {
+      id: '/_authenticated/reporting/history'
+      path: '/history'
+      fullPath: '/reporting/history'
+      preLoaderRoute: typeof AuthenticatedReportingHistoryRouteImport
+      parentRoute: typeof AuthenticatedReportingRoute
+    }
+    '/_authenticated/reporting/$key': {
+      id: '/_authenticated/reporting/$key'
+      path: '/$key'
+      fullPath: '/reporting/$key'
+      preLoaderRoute: typeof AuthenticatedReportingKeyRouteImport
+      parentRoute: typeof AuthenticatedReportingRoute
+    }
+    '/_authenticated/operational/reports': {
+      id: '/_authenticated/operational/reports'
+      path: '/reports'
+      fullPath: '/operational/reports'
+      preLoaderRoute: typeof AuthenticatedOperationalReportsRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/register': {
+      id: '/_authenticated/operational/register'
+      path: '/register'
+      fullPath: '/operational/register'
+      preLoaderRoute: typeof AuthenticatedOperationalRegisterRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/rcsa': {
+      id: '/_authenticated/operational/rcsa'
+      path: '/rcsa'
+      fullPath: '/operational/rcsa'
+      preLoaderRoute: typeof AuthenticatedOperationalRcsaRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/losses': {
+      id: '/_authenticated/operational/losses'
+      path: '/losses'
+      fullPath: '/operational/losses'
+      preLoaderRoute: typeof AuthenticatedOperationalLossesRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/kris': {
+      id: '/_authenticated/operational/kris'
+      path: '/kris'
+      fullPath: '/operational/kris'
+      preLoaderRoute: typeof AuthenticatedOperationalKrisRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/incidents': {
+      id: '/_authenticated/operational/incidents'
+      path: '/incidents'
+      fullPath: '/operational/incidents'
+      preLoaderRoute: typeof AuthenticatedOperationalIncidentsRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/fraud': {
+      id: '/_authenticated/operational/fraud'
+      path: '/fraud'
+      fullPath: '/operational/fraud'
+      preLoaderRoute: typeof AuthenticatedOperationalFraudRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/cyber': {
+      id: '/_authenticated/operational/cyber'
+      path: '/cyber'
+      fullPath: '/operational/cyber'
+      preLoaderRoute: typeof AuthenticatedOperationalCyberRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/operational/bcp': {
+      id: '/_authenticated/operational/bcp'
+      path: '/bcp'
+      fullPath: '/operational/bcp'
+      preLoaderRoute: typeof AuthenticatedOperationalBcpRouteImport
+      parentRoute: typeof AuthenticatedOperationalRoute
+    }
+    '/_authenticated/market/var': {
+      id: '/_authenticated/market/var'
+      path: '/var'
+      fullPath: '/market/var'
+      preLoaderRoute: typeof AuthenticatedMarketVarRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/sensitivity': {
+      id: '/_authenticated/market/sensitivity'
+      path: '/sensitivity'
+      fullPath: '/market/sensitivity'
+      preLoaderRoute: typeof AuthenticatedMarketSensitivityRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/scenarios': {
+      id: '/_authenticated/market/scenarios'
+      path: '/scenarios'
+      fullPath: '/market/scenarios'
+      preLoaderRoute: typeof AuthenticatedMarketScenariosRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/reports': {
+      id: '/_authenticated/market/reports'
+      path: '/reports'
+      fullPath: '/market/reports'
+      preLoaderRoute: typeof AuthenticatedMarketReportsRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/positions': {
+      id: '/_authenticated/market/positions'
+      path: '/positions'
+      fullPath: '/market/positions'
+      preLoaderRoute: typeof AuthenticatedMarketPositionsRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/ir': {
+      id: '/_authenticated/market/ir'
+      path: '/ir'
+      fullPath: '/market/ir'
+      preLoaderRoute: typeof AuthenticatedMarketIrRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/fx': {
+      id: '/_authenticated/market/fx'
+      path: '/fx'
+      fullPath: '/market/fx'
+      preLoaderRoute: typeof AuthenticatedMarketFxRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/equity': {
+      id: '/_authenticated/market/equity'
+      path: '/equity'
+      fullPath: '/market/equity'
+      preLoaderRoute: typeof AuthenticatedMarketEquityRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/duration': {
+      id: '/_authenticated/market/duration'
+      path: '/duration'
+      fullPath: '/market/duration'
+      preLoaderRoute: typeof AuthenticatedMarketDurationRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/market/commodity': {
+      id: '/_authenticated/market/commodity'
+      path: '/commodity'
+      fullPath: '/market/commodity'
+      preLoaderRoute: typeof AuthenticatedMarketCommodityRouteImport
+      parentRoute: typeof AuthenticatedMarketRoute
+    }
+    '/_authenticated/liquidity/stress': {
+      id: '/_authenticated/liquidity/stress'
+      path: '/stress'
+      fullPath: '/liquidity/stress'
+      preLoaderRoute: typeof AuthenticatedLiquidityStressRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/reports': {
+      id: '/_authenticated/liquidity/reports'
+      path: '/reports'
+      fullPath: '/liquidity/reports'
+      preLoaderRoute: typeof AuthenticatedLiquidityReportsRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/nsfr': {
+      id: '/_authenticated/liquidity/nsfr'
+      path: '/nsfr'
+      fullPath: '/liquidity/nsfr'
+      preLoaderRoute: typeof AuthenticatedLiquidityNsfrRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/lcr': {
+      id: '/_authenticated/liquidity/lcr'
+      path: '/lcr'
+      fullPath: '/liquidity/lcr'
+      preLoaderRoute: typeof AuthenticatedLiquidityLcrRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/hqla': {
+      id: '/_authenticated/liquidity/hqla'
+      path: '/hqla'
+      fullPath: '/liquidity/hqla'
+      preLoaderRoute: typeof AuthenticatedLiquidityHqlaRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/gap': {
+      id: '/_authenticated/liquidity/gap'
+      path: '/gap'
+      fullPath: '/liquidity/gap'
+      preLoaderRoute: typeof AuthenticatedLiquidityGapRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/funding': {
+      id: '/_authenticated/liquidity/funding'
+      path: '/funding'
+      fullPath: '/liquidity/funding'
+      preLoaderRoute: typeof AuthenticatedLiquidityFundingRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/cashflow': {
+      id: '/_authenticated/liquidity/cashflow'
+      path: '/cashflow'
+      fullPath: '/liquidity/cashflow'
+      preLoaderRoute: typeof AuthenticatedLiquidityCashflowRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/liquidity/buckets': {
+      id: '/_authenticated/liquidity/buckets'
+      path: '/buckets'
+      fullPath: '/liquidity/buckets'
+      preLoaderRoute: typeof AuthenticatedLiquidityBucketsRouteImport
+      parentRoute: typeof AuthenticatedLiquidityRoute
+    }
+    '/_authenticated/imports/history': {
+      id: '/_authenticated/imports/history'
+      path: '/history'
+      fullPath: '/imports/history'
+      preLoaderRoute: typeof AuthenticatedImportsHistoryRouteImport
+      parentRoute: typeof AuthenticatedImportsRoute
+    }
+    '/_authenticated/imports/$package': {
+      id: '/_authenticated/imports/$package'
+      path: '/$package'
+      fullPath: '/imports/$package'
+      preLoaderRoute: typeof AuthenticatedImportsPackageRouteImport
+      parentRoute: typeof AuthenticatedImportsRoute
+    }
+    '/_authenticated/dictionary/validate': {
+      id: '/_authenticated/dictionary/validate'
+      path: '/validate'
+      fullPath: '/dictionary/validate'
+      preLoaderRoute: typeof AuthenticatedDictionaryValidateRouteImport
+      parentRoute: typeof AuthenticatedDictionaryRoute
+    }
+    '/_authenticated/dictionary/$package': {
+      id: '/_authenticated/dictionary/$package'
+      path: '/$package'
+      fullPath: '/dictionary/$package'
+      preLoaderRoute: typeof AuthenticatedDictionaryPackageRouteImport
+      parentRoute: typeof AuthenticatedDictionaryRoute
+    }
+    '/_authenticated/credit/watchlist': {
+      id: '/_authenticated/credit/watchlist'
+      path: '/watchlist'
+      fullPath: '/credit/watchlist'
+      preLoaderRoute: typeof AuthenticatedCreditWatchlistRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/credit/reports': {
+      id: '/_authenticated/credit/reports'
+      path: '/reports'
+      fullPath: '/credit/reports'
+      preLoaderRoute: typeof AuthenticatedCreditReportsRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/credit/portfolio': {
+      id: '/_authenticated/credit/portfolio'
+      path: '/portfolio'
+      fullPath: '/credit/portfolio'
+      preLoaderRoute: typeof AuthenticatedCreditPortfolioRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/credit/loans': {
+      id: '/_authenticated/credit/loans'
+      path: '/loans'
+      fullPath: '/credit/loans'
+      preLoaderRoute: typeof AuthenticatedCreditLoansRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/credit/early-warning': {
+      id: '/_authenticated/credit/early-warning'
+      path: '/early-warning'
+      fullPath: '/credit/early-warning'
+      preLoaderRoute: typeof AuthenticatedCreditEarlyWarningRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/credit/collateral': {
+      id: '/_authenticated/credit/collateral'
+      path: '/collateral'
+      fullPath: '/credit/collateral'
+      preLoaderRoute: typeof AuthenticatedCreditCollateralRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/credit/borrowers': {
+      id: '/_authenticated/credit/borrowers'
+      path: '/borrowers'
+      fullPath: '/credit/borrowers'
+      preLoaderRoute: typeof AuthenticatedCreditBorrowersRouteImport
+      parentRoute: typeof AuthenticatedCreditRoute
+    }
+    '/_authenticated/compliance/violations': {
+      id: '/_authenticated/compliance/violations'
+      path: '/violations'
+      fullPath: '/compliance/violations'
+      preLoaderRoute: typeof AuthenticatedComplianceViolationsRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/compliance/tasks': {
+      id: '/_authenticated/compliance/tasks'
+      path: '/tasks'
+      fullPath: '/compliance/tasks'
+      preLoaderRoute: typeof AuthenticatedComplianceTasksRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/compliance/rules': {
+      id: '/_authenticated/compliance/rules'
+      path: '/rules'
+      fullPath: '/compliance/rules'
+      preLoaderRoute: typeof AuthenticatedComplianceRulesRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/compliance/reports': {
+      id: '/_authenticated/compliance/reports'
+      path: '/reports'
+      fullPath: '/compliance/reports'
+      preLoaderRoute: typeof AuthenticatedComplianceReportsRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/compliance/monitoring': {
+      id: '/_authenticated/compliance/monitoring'
+      path: '/monitoring'
+      fullPath: '/compliance/monitoring'
+      preLoaderRoute: typeof AuthenticatedComplianceMonitoringRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/compliance/audit': {
+      id: '/_authenticated/compliance/audit'
+      path: '/audit'
+      fullPath: '/compliance/audit'
+      preLoaderRoute: typeof AuthenticatedComplianceAuditRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/compliance/approvals': {
+      id: '/_authenticated/compliance/approvals'
+      path: '/approvals'
+      fullPath: '/compliance/approvals'
+      preLoaderRoute: typeof AuthenticatedComplianceApprovalsRouteImport
+      parentRoute: typeof AuthenticatedComplianceRoute
+    }
+    '/_authenticated/assets/$category': {
+      id: '/_authenticated/assets/$category'
+      path: '/assets/$category'
+      fullPath: '/assets/$category'
+      preLoaderRoute: typeof AuthenticatedAssetsCategoryRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/ai/risk': {
+      id: '/_authenticated/ai/risk'
+      path: '/risk'
+      fullPath: '/ai/risk'
+      preLoaderRoute: typeof AuthenticatedAiRiskRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/recommendations': {
+      id: '/_authenticated/ai/recommendations'
+      path: '/recommendations'
+      fullPath: '/ai/recommendations'
+      preLoaderRoute: typeof AuthenticatedAiRecommendationsRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/query': {
+      id: '/_authenticated/ai/query'
+      path: '/query'
+      fullPath: '/ai/query'
+      preLoaderRoute: typeof AuthenticatedAiQueryRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/prediction': {
+      id: '/_authenticated/ai/prediction'
+      path: '/prediction'
+      fullPath: '/ai/prediction'
+      preLoaderRoute: typeof AuthenticatedAiPredictionRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/liquidity': {
+      id: '/_authenticated/ai/liquidity'
+      path: '/liquidity'
+      fullPath: '/ai/liquidity'
+      preLoaderRoute: typeof AuthenticatedAiLiquidityRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/fraud': {
+      id: '/_authenticated/ai/fraud'
+      path: '/fraud'
+      fullPath: '/ai/fraud'
+      preLoaderRoute: typeof AuthenticatedAiFraudRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/compliance': {
+      id: '/_authenticated/ai/compliance'
+      path: '/compliance'
+      fullPath: '/ai/compliance'
+      preLoaderRoute: typeof AuthenticatedAiComplianceRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/_authenticated/ai/capital': {
+      id: '/_authenticated/ai/capital'
+      path: '/capital'
+      fullPath: '/ai/capital'
+      preLoaderRoute: typeof AuthenticatedAiCapitalRouteImport
+      parentRoute: typeof AuthenticatedAiRoute
+    }
+    '/api/public/hooks/workflow-tick': {
+      id: '/api/public/hooks/workflow-tick'
+      path: '/api/public/hooks/workflow-tick'
+      fullPath: '/api/public/hooks/workflow-tick'
+      preLoaderRoute: typeof ApiPublicHooksWorkflowTickRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/credit/portfolio-summary': {
+      id: '/api/public/credit/portfolio-summary'
+      path: '/api/public/credit/portfolio-summary'
+      fullPath: '/api/public/credit/portfolio-summary'
+      preLoaderRoute: typeof ApiPublicCreditPortfolioSummaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/compliance/tasks/$id': {
+      id: '/_authenticated/compliance/tasks/$id'
+      path: '/$id'
+      fullPath: '/compliance/tasks/$id'
+      preLoaderRoute: typeof AuthenticatedComplianceTasksIdRouteImport
+      parentRoute: typeof AuthenticatedComplianceTasksRoute
+    }
   }
 }
 
+interface AuthenticatedAiRouteChildren {
+  AuthenticatedAiCapitalRoute: typeof AuthenticatedAiCapitalRoute
+  AuthenticatedAiComplianceRoute: typeof AuthenticatedAiComplianceRoute
+  AuthenticatedAiFraudRoute: typeof AuthenticatedAiFraudRoute
+  AuthenticatedAiLiquidityRoute: typeof AuthenticatedAiLiquidityRoute
+  AuthenticatedAiPredictionRoute: typeof AuthenticatedAiPredictionRoute
+  AuthenticatedAiQueryRoute: typeof AuthenticatedAiQueryRoute
+  AuthenticatedAiRecommendationsRoute: typeof AuthenticatedAiRecommendationsRoute
+  AuthenticatedAiRiskRoute: typeof AuthenticatedAiRiskRoute
+  AuthenticatedAiIndexRoute: typeof AuthenticatedAiIndexRoute
+}
+
+const AuthenticatedAiRouteChildren: AuthenticatedAiRouteChildren = {
+  AuthenticatedAiCapitalRoute: AuthenticatedAiCapitalRoute,
+  AuthenticatedAiComplianceRoute: AuthenticatedAiComplianceRoute,
+  AuthenticatedAiFraudRoute: AuthenticatedAiFraudRoute,
+  AuthenticatedAiLiquidityRoute: AuthenticatedAiLiquidityRoute,
+  AuthenticatedAiPredictionRoute: AuthenticatedAiPredictionRoute,
+  AuthenticatedAiQueryRoute: AuthenticatedAiQueryRoute,
+  AuthenticatedAiRecommendationsRoute: AuthenticatedAiRecommendationsRoute,
+  AuthenticatedAiRiskRoute: AuthenticatedAiRiskRoute,
+  AuthenticatedAiIndexRoute: AuthenticatedAiIndexRoute,
+}
+
+const AuthenticatedAiRouteWithChildren = AuthenticatedAiRoute._addFileChildren(
+  AuthenticatedAiRouteChildren,
+)
+
+interface AuthenticatedComplianceTasksRouteChildren {
+  AuthenticatedComplianceTasksIdRoute: typeof AuthenticatedComplianceTasksIdRoute
+}
+
+const AuthenticatedComplianceTasksRouteChildren: AuthenticatedComplianceTasksRouteChildren =
+  {
+    AuthenticatedComplianceTasksIdRoute: AuthenticatedComplianceTasksIdRoute,
+  }
+
+const AuthenticatedComplianceTasksRouteWithChildren =
+  AuthenticatedComplianceTasksRoute._addFileChildren(
+    AuthenticatedComplianceTasksRouteChildren,
+  )
+
+interface AuthenticatedComplianceRouteChildren {
+  AuthenticatedComplianceApprovalsRoute: typeof AuthenticatedComplianceApprovalsRoute
+  AuthenticatedComplianceAuditRoute: typeof AuthenticatedComplianceAuditRoute
+  AuthenticatedComplianceMonitoringRoute: typeof AuthenticatedComplianceMonitoringRoute
+  AuthenticatedComplianceReportsRoute: typeof AuthenticatedComplianceReportsRoute
+  AuthenticatedComplianceRulesRoute: typeof AuthenticatedComplianceRulesRoute
+  AuthenticatedComplianceTasksRoute: typeof AuthenticatedComplianceTasksRouteWithChildren
+  AuthenticatedComplianceViolationsRoute: typeof AuthenticatedComplianceViolationsRoute
+  AuthenticatedComplianceIndexRoute: typeof AuthenticatedComplianceIndexRoute
+}
+
+const AuthenticatedComplianceRouteChildren: AuthenticatedComplianceRouteChildren =
+  {
+    AuthenticatedComplianceApprovalsRoute:
+      AuthenticatedComplianceApprovalsRoute,
+    AuthenticatedComplianceAuditRoute: AuthenticatedComplianceAuditRoute,
+    AuthenticatedComplianceMonitoringRoute:
+      AuthenticatedComplianceMonitoringRoute,
+    AuthenticatedComplianceReportsRoute: AuthenticatedComplianceReportsRoute,
+    AuthenticatedComplianceRulesRoute: AuthenticatedComplianceRulesRoute,
+    AuthenticatedComplianceTasksRoute:
+      AuthenticatedComplianceTasksRouteWithChildren,
+    AuthenticatedComplianceViolationsRoute:
+      AuthenticatedComplianceViolationsRoute,
+    AuthenticatedComplianceIndexRoute: AuthenticatedComplianceIndexRoute,
+  }
+
+const AuthenticatedComplianceRouteWithChildren =
+  AuthenticatedComplianceRoute._addFileChildren(
+    AuthenticatedComplianceRouteChildren,
+  )
+
+interface AuthenticatedCreditRouteChildren {
+  AuthenticatedCreditBorrowersRoute: typeof AuthenticatedCreditBorrowersRoute
+  AuthenticatedCreditCollateralRoute: typeof AuthenticatedCreditCollateralRoute
+  AuthenticatedCreditEarlyWarningRoute: typeof AuthenticatedCreditEarlyWarningRoute
+  AuthenticatedCreditLoansRoute: typeof AuthenticatedCreditLoansRoute
+  AuthenticatedCreditPortfolioRoute: typeof AuthenticatedCreditPortfolioRoute
+  AuthenticatedCreditReportsRoute: typeof AuthenticatedCreditReportsRoute
+  AuthenticatedCreditWatchlistRoute: typeof AuthenticatedCreditWatchlistRoute
+  AuthenticatedCreditIndexRoute: typeof AuthenticatedCreditIndexRoute
+}
+
+const AuthenticatedCreditRouteChildren: AuthenticatedCreditRouteChildren = {
+  AuthenticatedCreditBorrowersRoute: AuthenticatedCreditBorrowersRoute,
+  AuthenticatedCreditCollateralRoute: AuthenticatedCreditCollateralRoute,
+  AuthenticatedCreditEarlyWarningRoute: AuthenticatedCreditEarlyWarningRoute,
+  AuthenticatedCreditLoansRoute: AuthenticatedCreditLoansRoute,
+  AuthenticatedCreditPortfolioRoute: AuthenticatedCreditPortfolioRoute,
+  AuthenticatedCreditReportsRoute: AuthenticatedCreditReportsRoute,
+  AuthenticatedCreditWatchlistRoute: AuthenticatedCreditWatchlistRoute,
+  AuthenticatedCreditIndexRoute: AuthenticatedCreditIndexRoute,
+}
+
+const AuthenticatedCreditRouteWithChildren =
+  AuthenticatedCreditRoute._addFileChildren(AuthenticatedCreditRouteChildren)
+
+interface AuthenticatedDictionaryRouteChildren {
+  AuthenticatedDictionaryPackageRoute: typeof AuthenticatedDictionaryPackageRoute
+  AuthenticatedDictionaryValidateRoute: typeof AuthenticatedDictionaryValidateRoute
+  AuthenticatedDictionaryIndexRoute: typeof AuthenticatedDictionaryIndexRoute
+}
+
+const AuthenticatedDictionaryRouteChildren: AuthenticatedDictionaryRouteChildren =
+  {
+    AuthenticatedDictionaryPackageRoute: AuthenticatedDictionaryPackageRoute,
+    AuthenticatedDictionaryValidateRoute: AuthenticatedDictionaryValidateRoute,
+    AuthenticatedDictionaryIndexRoute: AuthenticatedDictionaryIndexRoute,
+  }
+
+const AuthenticatedDictionaryRouteWithChildren =
+  AuthenticatedDictionaryRoute._addFileChildren(
+    AuthenticatedDictionaryRouteChildren,
+  )
+
+interface AuthenticatedImportsRouteChildren {
+  AuthenticatedImportsPackageRoute: typeof AuthenticatedImportsPackageRoute
+  AuthenticatedImportsHistoryRoute: typeof AuthenticatedImportsHistoryRoute
+  AuthenticatedImportsIndexRoute: typeof AuthenticatedImportsIndexRoute
+}
+
+const AuthenticatedImportsRouteChildren: AuthenticatedImportsRouteChildren = {
+  AuthenticatedImportsPackageRoute: AuthenticatedImportsPackageRoute,
+  AuthenticatedImportsHistoryRoute: AuthenticatedImportsHistoryRoute,
+  AuthenticatedImportsIndexRoute: AuthenticatedImportsIndexRoute,
+}
+
+const AuthenticatedImportsRouteWithChildren =
+  AuthenticatedImportsRoute._addFileChildren(AuthenticatedImportsRouteChildren)
+
+interface AuthenticatedLiquidityRouteChildren {
+  AuthenticatedLiquidityBucketsRoute: typeof AuthenticatedLiquidityBucketsRoute
+  AuthenticatedLiquidityCashflowRoute: typeof AuthenticatedLiquidityCashflowRoute
+  AuthenticatedLiquidityFundingRoute: typeof AuthenticatedLiquidityFundingRoute
+  AuthenticatedLiquidityGapRoute: typeof AuthenticatedLiquidityGapRoute
+  AuthenticatedLiquidityHqlaRoute: typeof AuthenticatedLiquidityHqlaRoute
+  AuthenticatedLiquidityLcrRoute: typeof AuthenticatedLiquidityLcrRoute
+  AuthenticatedLiquidityNsfrRoute: typeof AuthenticatedLiquidityNsfrRoute
+  AuthenticatedLiquidityReportsRoute: typeof AuthenticatedLiquidityReportsRoute
+  AuthenticatedLiquidityStressRoute: typeof AuthenticatedLiquidityStressRoute
+  AuthenticatedLiquidityIndexRoute: typeof AuthenticatedLiquidityIndexRoute
+}
+
+const AuthenticatedLiquidityRouteChildren: AuthenticatedLiquidityRouteChildren =
+  {
+    AuthenticatedLiquidityBucketsRoute: AuthenticatedLiquidityBucketsRoute,
+    AuthenticatedLiquidityCashflowRoute: AuthenticatedLiquidityCashflowRoute,
+    AuthenticatedLiquidityFundingRoute: AuthenticatedLiquidityFundingRoute,
+    AuthenticatedLiquidityGapRoute: AuthenticatedLiquidityGapRoute,
+    AuthenticatedLiquidityHqlaRoute: AuthenticatedLiquidityHqlaRoute,
+    AuthenticatedLiquidityLcrRoute: AuthenticatedLiquidityLcrRoute,
+    AuthenticatedLiquidityNsfrRoute: AuthenticatedLiquidityNsfrRoute,
+    AuthenticatedLiquidityReportsRoute: AuthenticatedLiquidityReportsRoute,
+    AuthenticatedLiquidityStressRoute: AuthenticatedLiquidityStressRoute,
+    AuthenticatedLiquidityIndexRoute: AuthenticatedLiquidityIndexRoute,
+  }
+
+const AuthenticatedLiquidityRouteWithChildren =
+  AuthenticatedLiquidityRoute._addFileChildren(
+    AuthenticatedLiquidityRouteChildren,
+  )
+
+interface AuthenticatedMarketRouteChildren {
+  AuthenticatedMarketCommodityRoute: typeof AuthenticatedMarketCommodityRoute
+  AuthenticatedMarketDurationRoute: typeof AuthenticatedMarketDurationRoute
+  AuthenticatedMarketEquityRoute: typeof AuthenticatedMarketEquityRoute
+  AuthenticatedMarketFxRoute: typeof AuthenticatedMarketFxRoute
+  AuthenticatedMarketIrRoute: typeof AuthenticatedMarketIrRoute
+  AuthenticatedMarketPositionsRoute: typeof AuthenticatedMarketPositionsRoute
+  AuthenticatedMarketReportsRoute: typeof AuthenticatedMarketReportsRoute
+  AuthenticatedMarketScenariosRoute: typeof AuthenticatedMarketScenariosRoute
+  AuthenticatedMarketSensitivityRoute: typeof AuthenticatedMarketSensitivityRoute
+  AuthenticatedMarketVarRoute: typeof AuthenticatedMarketVarRoute
+  AuthenticatedMarketIndexRoute: typeof AuthenticatedMarketIndexRoute
+}
+
+const AuthenticatedMarketRouteChildren: AuthenticatedMarketRouteChildren = {
+  AuthenticatedMarketCommodityRoute: AuthenticatedMarketCommodityRoute,
+  AuthenticatedMarketDurationRoute: AuthenticatedMarketDurationRoute,
+  AuthenticatedMarketEquityRoute: AuthenticatedMarketEquityRoute,
+  AuthenticatedMarketFxRoute: AuthenticatedMarketFxRoute,
+  AuthenticatedMarketIrRoute: AuthenticatedMarketIrRoute,
+  AuthenticatedMarketPositionsRoute: AuthenticatedMarketPositionsRoute,
+  AuthenticatedMarketReportsRoute: AuthenticatedMarketReportsRoute,
+  AuthenticatedMarketScenariosRoute: AuthenticatedMarketScenariosRoute,
+  AuthenticatedMarketSensitivityRoute: AuthenticatedMarketSensitivityRoute,
+  AuthenticatedMarketVarRoute: AuthenticatedMarketVarRoute,
+  AuthenticatedMarketIndexRoute: AuthenticatedMarketIndexRoute,
+}
+
+const AuthenticatedMarketRouteWithChildren =
+  AuthenticatedMarketRoute._addFileChildren(AuthenticatedMarketRouteChildren)
+
+interface AuthenticatedOperationalRouteChildren {
+  AuthenticatedOperationalBcpRoute: typeof AuthenticatedOperationalBcpRoute
+  AuthenticatedOperationalCyberRoute: typeof AuthenticatedOperationalCyberRoute
+  AuthenticatedOperationalFraudRoute: typeof AuthenticatedOperationalFraudRoute
+  AuthenticatedOperationalIncidentsRoute: typeof AuthenticatedOperationalIncidentsRoute
+  AuthenticatedOperationalKrisRoute: typeof AuthenticatedOperationalKrisRoute
+  AuthenticatedOperationalLossesRoute: typeof AuthenticatedOperationalLossesRoute
+  AuthenticatedOperationalRcsaRoute: typeof AuthenticatedOperationalRcsaRoute
+  AuthenticatedOperationalRegisterRoute: typeof AuthenticatedOperationalRegisterRoute
+  AuthenticatedOperationalReportsRoute: typeof AuthenticatedOperationalReportsRoute
+  AuthenticatedOperationalIndexRoute: typeof AuthenticatedOperationalIndexRoute
+}
+
+const AuthenticatedOperationalRouteChildren: AuthenticatedOperationalRouteChildren =
+  {
+    AuthenticatedOperationalBcpRoute: AuthenticatedOperationalBcpRoute,
+    AuthenticatedOperationalCyberRoute: AuthenticatedOperationalCyberRoute,
+    AuthenticatedOperationalFraudRoute: AuthenticatedOperationalFraudRoute,
+    AuthenticatedOperationalIncidentsRoute:
+      AuthenticatedOperationalIncidentsRoute,
+    AuthenticatedOperationalKrisRoute: AuthenticatedOperationalKrisRoute,
+    AuthenticatedOperationalLossesRoute: AuthenticatedOperationalLossesRoute,
+    AuthenticatedOperationalRcsaRoute: AuthenticatedOperationalRcsaRoute,
+    AuthenticatedOperationalRegisterRoute:
+      AuthenticatedOperationalRegisterRoute,
+    AuthenticatedOperationalReportsRoute: AuthenticatedOperationalReportsRoute,
+    AuthenticatedOperationalIndexRoute: AuthenticatedOperationalIndexRoute,
+  }
+
+const AuthenticatedOperationalRouteWithChildren =
+  AuthenticatedOperationalRoute._addFileChildren(
+    AuthenticatedOperationalRouteChildren,
+  )
+
+interface AuthenticatedReportingRouteChildren {
+  AuthenticatedReportingKeyRoute: typeof AuthenticatedReportingKeyRoute
+  AuthenticatedReportingHistoryRoute: typeof AuthenticatedReportingHistoryRoute
+  AuthenticatedReportingSchedulesRoute: typeof AuthenticatedReportingSchedulesRoute
+  AuthenticatedReportingIndexRoute: typeof AuthenticatedReportingIndexRoute
+}
+
+const AuthenticatedReportingRouteChildren: AuthenticatedReportingRouteChildren =
+  {
+    AuthenticatedReportingKeyRoute: AuthenticatedReportingKeyRoute,
+    AuthenticatedReportingHistoryRoute: AuthenticatedReportingHistoryRoute,
+    AuthenticatedReportingSchedulesRoute: AuthenticatedReportingSchedulesRoute,
+    AuthenticatedReportingIndexRoute: AuthenticatedReportingIndexRoute,
+  }
+
+const AuthenticatedReportingRouteWithChildren =
+  AuthenticatedReportingRoute._addFileChildren(
+    AuthenticatedReportingRouteChildren,
+  )
+
+interface AuthenticatedStressRouteChildren {
+  AuthenticatedStressIdRoute: typeof AuthenticatedStressIdRoute
+  AuthenticatedStressBuilderRoute: typeof AuthenticatedStressBuilderRoute
+  AuthenticatedStressReportsRoute: typeof AuthenticatedStressReportsRoute
+  AuthenticatedStressIndexRoute: typeof AuthenticatedStressIndexRoute
+}
+
+const AuthenticatedStressRouteChildren: AuthenticatedStressRouteChildren = {
+  AuthenticatedStressIdRoute: AuthenticatedStressIdRoute,
+  AuthenticatedStressBuilderRoute: AuthenticatedStressBuilderRoute,
+  AuthenticatedStressReportsRoute: AuthenticatedStressReportsRoute,
+  AuthenticatedStressIndexRoute: AuthenticatedStressIndexRoute,
+}
+
+const AuthenticatedStressRouteWithChildren =
+  AuthenticatedStressRoute._addFileChildren(AuthenticatedStressRouteChildren)
+
+interface AuthenticatedWorkflowRouteChildren {
+  AuthenticatedWorkflowApprovalsRoute: typeof AuthenticatedWorkflowApprovalsRoute
+  AuthenticatedWorkflowAuditRoute: typeof AuthenticatedWorkflowAuditRoute
+  AuthenticatedWorkflowNotificationsRoute: typeof AuthenticatedWorkflowNotificationsRoute
+  AuthenticatedWorkflowPreferencesRoute: typeof AuthenticatedWorkflowPreferencesRoute
+  AuthenticatedWorkflowRulesRoute: typeof AuthenticatedWorkflowRulesRoute
+  AuthenticatedWorkflowTasksRoute: typeof AuthenticatedWorkflowTasksRoute
+  AuthenticatedWorkflowIndexRoute: typeof AuthenticatedWorkflowIndexRoute
+}
+
+const AuthenticatedWorkflowRouteChildren: AuthenticatedWorkflowRouteChildren = {
+  AuthenticatedWorkflowApprovalsRoute: AuthenticatedWorkflowApprovalsRoute,
+  AuthenticatedWorkflowAuditRoute: AuthenticatedWorkflowAuditRoute,
+  AuthenticatedWorkflowNotificationsRoute:
+    AuthenticatedWorkflowNotificationsRoute,
+  AuthenticatedWorkflowPreferencesRoute: AuthenticatedWorkflowPreferencesRoute,
+  AuthenticatedWorkflowRulesRoute: AuthenticatedWorkflowRulesRoute,
+  AuthenticatedWorkflowTasksRoute: AuthenticatedWorkflowTasksRoute,
+  AuthenticatedWorkflowIndexRoute: AuthenticatedWorkflowIndexRoute,
+}
+
+const AuthenticatedWorkflowRouteWithChildren =
+  AuthenticatedWorkflowRoute._addFileChildren(
+    AuthenticatedWorkflowRouteChildren,
+  )
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAiRoute: typeof AuthenticatedAiRouteWithChildren
+  AuthenticatedApprovalsRoute: typeof AuthenticatedApprovalsRoute
+  AuthenticatedComplianceRoute: typeof AuthenticatedComplianceRouteWithChildren
+  AuthenticatedCreditRoute: typeof AuthenticatedCreditRouteWithChildren
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedDictionaryRoute: typeof AuthenticatedDictionaryRouteWithChildren
+  AuthenticatedHistoryRoute: typeof AuthenticatedHistoryRoute
+  AuthenticatedImportsRoute: typeof AuthenticatedImportsRouteWithChildren
+  AuthenticatedLiquidityRoute: typeof AuthenticatedLiquidityRouteWithChildren
+  AuthenticatedMarketRoute: typeof AuthenticatedMarketRouteWithChildren
+  AuthenticatedOperationalRoute: typeof AuthenticatedOperationalRouteWithChildren
+  AuthenticatedReportingRoute: typeof AuthenticatedReportingRouteWithChildren
+  AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
+  AuthenticatedRulesRoute: typeof AuthenticatedRulesRoute
+  AuthenticatedStressRoute: typeof AuthenticatedStressRouteWithChildren
+  AuthenticatedWorkflowRoute: typeof AuthenticatedWorkflowRouteWithChildren
+  AuthenticatedAssetsCategoryRoute: typeof AuthenticatedAssetsCategoryRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAiRoute: AuthenticatedAiRouteWithChildren,
+  AuthenticatedApprovalsRoute: AuthenticatedApprovalsRoute,
+  AuthenticatedComplianceRoute: AuthenticatedComplianceRouteWithChildren,
+  AuthenticatedCreditRoute: AuthenticatedCreditRouteWithChildren,
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedDictionaryRoute: AuthenticatedDictionaryRouteWithChildren,
+  AuthenticatedHistoryRoute: AuthenticatedHistoryRoute,
+  AuthenticatedImportsRoute: AuthenticatedImportsRouteWithChildren,
+  AuthenticatedLiquidityRoute: AuthenticatedLiquidityRouteWithChildren,
+  AuthenticatedMarketRoute: AuthenticatedMarketRouteWithChildren,
+  AuthenticatedOperationalRoute: AuthenticatedOperationalRouteWithChildren,
+  AuthenticatedReportingRoute: AuthenticatedReportingRouteWithChildren,
+  AuthenticatedReportsRoute: AuthenticatedReportsRoute,
+  AuthenticatedRulesRoute: AuthenticatedRulesRoute,
+  AuthenticatedStressRoute: AuthenticatedStressRouteWithChildren,
+  AuthenticatedWorkflowRoute: AuthenticatedWorkflowRouteWithChildren,
+  AuthenticatedAssetsCategoryRoute: AuthenticatedAssetsCategoryRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  ApiPublicHealthRoute: ApiPublicHealthRoute,
+  ApiPublicReadyRoute: ApiPublicReadyRoute,
+  ApiPublicCreditPortfolioSummaryRoute: ApiPublicCreditPortfolioSummaryRoute,
+  ApiPublicHooksWorkflowTickRoute: ApiPublicHooksWorkflowTickRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
