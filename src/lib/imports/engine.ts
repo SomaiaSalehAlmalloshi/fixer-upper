@@ -238,7 +238,7 @@ export async function runImport(
 
     // Resolve FKs
     const errors: RowError[] = [];
-    const insertRows: Record<string, unknown>[] = [];
+    const insertRows: { row: Record<string, unknown>; excelRow: number }[] = [];
 
     for (let i = 0; i < sheet.preparedRows.length; i++) {
       const row = { ...sheet.preparedRows[i] };
