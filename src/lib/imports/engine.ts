@@ -346,10 +346,8 @@ export async function runImport(
     }
 
     totalImported += inserted;
-    totalFailed += insertRows.length - inserted + errors.filter((e) => e.row !== 0).length - (insertRows.length - inserted);
-    // Simpler: failed = total prepared - inserted
     const failedCount = sheet.preparedRows.length - inserted;
-    totalFailed += 0; // already added above; recompute cleanly below
+    totalFailed += failedCount;
     outcomes.push({
       sheetName: sheet.sheetName,
       table: sheet.spec.table,
