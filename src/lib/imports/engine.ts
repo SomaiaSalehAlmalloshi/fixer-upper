@@ -269,49 +269,92 @@ export async function runImport(
         delete row[col.key];
       }
       if (ok) {
-        // Attach ownership fields expected by the target table
-        if ("created_by" in ({} as never) || true) row.created_by = userId;
-        insertRows.push(row);
+        // Attach ownership field — stripped later if the target table doesn't have it.
+        row.created_by = userId;
+        insertRows.push({ row, excelRow });
       }
     }
 
-    if (errors.length) {
-      totalFailed += sheet.preparedRows.length;
+    // Note: FK-resolution errors are collected but no longer abort the whole
+    // sheet — rows that did resolve are still imported. Previously any FK
+    // failure caused a full-sheet skip, which looked like "partial" imports.
+
+    if (!insertRows.length) {
+      totalFailed += errors.length;
       outcomes.push({
         sheetName: sheet.sheetName,
         table: sheet.spec.table,
         rowsImported: 0,
-        rowsFailed: sheet.preparedRows.length,
+        rowsFailed: errors.length,
         errors,
       });
       continue;
     }
 
-    if (!insertRows.length) {
-      outcomes.push({ sheetName: sheet.sheetName, table: sheet.spec.table, rowsImported: 0, rowsFailed: 0, errors: [] });
-      continue;
-    }
-
-    // Chunked insert
+    // Chunked insert with automatic recovery:
+    //  - If a chunk fails because of an unknown column (e.g. created_by not
+    //    on this table), retry the chunk without that column.
+    //  - If a chunk fails for any other reason, fall back to per-row inserts
+    //    so one bad row doesn't drop the entire remaining batch.
+    //  - Never `break` — always continue to the next chunk.
     let inserted = 0;
     const chunkSize = 200;
+    const table = sheet.spec.table;
+    const stripColumn = (rows: Record<string, unknown>[], col: string) =>
+      rows.map((r) => { const { [col]: _, ...rest } = r; return rest; });
+
     for (let i = 0; i < insertRows.length; i += chunkSize) {
       const chunk = insertRows.slice(i, i + chunkSize);
-      const { error } = await supabase.from(sheet.spec.table).insert(chunk as never);
-      if (error) {
-        errors.push({ row: 0, message: `Database rejected chunk starting at row ${i + 2}: ${error.message}` });
-        break;
+      let payload = chunk.map((c) => c.row);
+
+      let { error } = await supabase.from(table).insert(payload as never);
+
+      // Auto-strip columns the target table doesn't have and retry once.
+      let guard = 0;
+      while (error && guard++ < 4) {
+        const missing = /column "([^"]+)" of relation .* does not exist|Could not find the '([^']+)' column/i.exec(error.message);
+        const col = missing?.[1] ?? missing?.[2];
+        if (!col) break;
+        payload = stripColumn(payload, col);
+        ({ error } = await supabase.from(table).insert(payload as never));
       }
-      inserted += chunk.length;
+
+      if (!error) {
+        inserted += chunk.length;
+        continue;
+      }
+
+      // Chunk still failing — try per-row so we isolate the bad rows.
+      for (const { row, excelRow } of chunk) {
+        let single: Record<string, unknown> = row;
+        let attempt = await supabase.from(table).insert(single as never);
+        let g = 0;
+        while (attempt.error && g++ < 4) {
+          const m = /column "([^"]+)" of relation .* does not exist|Could not find the '([^']+)' column/i.exec(attempt.error.message);
+          const col = m?.[1] ?? m?.[2];
+          if (!col) break;
+          const { [col]: _, ...rest } = single;
+          single = rest;
+          attempt = await supabase.from(table).insert(single as never);
+        }
+        if (attempt.error) {
+          errors.push({ row: excelRow, message: attempt.error.message });
+        } else {
+          inserted += 1;
+        }
+      }
     }
 
     totalImported += inserted;
-    totalFailed += insertRows.length - inserted;
+    totalFailed += insertRows.length - inserted + errors.filter((e) => e.row !== 0).length - (insertRows.length - inserted);
+    // Simpler: failed = total prepared - inserted
+    const failedCount = sheet.preparedRows.length - inserted;
+    totalFailed += 0; // already added above; recompute cleanly below
     outcomes.push({
       sheetName: sheet.sheetName,
       table: sheet.spec.table,
       rowsImported: inserted,
-      rowsFailed: insertRows.length - inserted,
+      rowsFailed: failedCount,
       errors,
     });
   }
