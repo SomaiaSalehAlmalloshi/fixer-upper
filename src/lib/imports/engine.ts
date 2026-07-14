@@ -300,8 +300,8 @@ export async function runImport(
     let inserted = 0;
     const chunkSize = 200;
     const table = sheet.spec.table;
-    const stripColumn = (rows: Record<string, unknown>[], col: string) =>
-      rows.map((r) => { const { [col]: _, ...rest } = r; return rest; });
+    const stripColumn = (rows: Record<string, unknown>[], col: string): Record<string, unknown>[] =>
+      rows.map((r) => { const { [col]: _omit, ...rest } = r; return rest; });
 
     for (let i = 0; i < insertRows.length; i += chunkSize) {
       const chunk = insertRows.slice(i, i + chunkSize);
