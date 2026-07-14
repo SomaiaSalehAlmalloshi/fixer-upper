@@ -333,7 +333,7 @@ export async function runImport(
           const m = /column "([^"]+)" of relation .* does not exist|Could not find the '([^']+)' column/i.exec(attempt.error.message);
           const col = m?.[1] ?? m?.[2];
           if (!col) break;
-          const { [col]: _, ...rest } = single;
+          const { [col]: _omit, ...rest } = single;
           single = rest;
           attempt = await supabase.from(table).insert(single as never);
         }
