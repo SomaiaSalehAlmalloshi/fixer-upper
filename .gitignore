@@ -30,3 +30,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# production env
+.env.production
+deploy/nginx/certs/
