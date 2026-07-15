@@ -3,29 +3,7 @@ import { useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/lib/auth";
 import { Button } from "@/components/ui/button";
-import {
-  Shield,
-  ShieldAlert,
-  LayoutDashboard,
-  Coins,
-  TrendingUp,
-  Activity,
-  Sliders,
-  Workflow,
-  History,
-  FileBarChart,
-  LogOut,
-  Banknote,
-  LineChart,
-  Droplets,
-  Zap,
-  ShieldCheck,
-  FileStack,
-  Sparkles,
-  Upload,
-
-  Workflow as WorkflowIcon,
-} from "lucide-react";
+import { Shield, ShieldAlert, LayoutDashboard, Coins, TrendingUp, Activity, FileSliders as Sliders, Workflow, History, ChartBar as FileBarChart, LogOut, Banknote, ChartLine as LineChart, Droplets, Zap, ShieldCheck, FileStack, Sparkles, Database, Workflow as WorkflowIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import type { ReactNode } from "react";
@@ -49,7 +27,7 @@ const NAV: NavItem[] = [
   { match: "/compliance", label: t("nav_compliance"), icon: ShieldCheck, render: (c) => <Link to="/compliance">{c}</Link> },
   { match: "/reporting", label: t("nav_reporting"), icon: FileStack, render: (c) => <Link to="/reporting">{c}</Link> },
   { match: "/ai", label: t("nav_ai"), icon: Sparkles, render: (c) => <Link to="/ai">{c}</Link> },
-  { match: "/imports", label: t("nav_imports"), icon: Upload, render: (c) => <Link to="/imports">{c}</Link> },
+  { match: "/reference-data", label: "البيانات المرجعية", icon: Database, render: (c) => <Link to="/reference-data">{c}</Link> },
   { match: "/dictionary", label: "قاموس البيانات", icon: FileStack, render: (c) => <Link to="/dictionary">{c}</Link> },
   { match: "/workflow", label: t("nav_workflow"), icon: WorkflowIcon, render: (c) => <Link to="/workflow">{c}</Link> },
   { match: "/assets/credit", label: t("nav_rwa_credit"), icon: Coins, render: (c) => <Link to="/assets/$category" params={{ category: "credit" }}>{c}</Link> },

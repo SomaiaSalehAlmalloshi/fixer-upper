@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/table";
 import { getDictionaryPackage, type DictionarySheet, type DictionaryColumn } from "@/lib/dictionary";
 import { buildRichTemplate } from "@/lib/dictionary/template-generator";
-import { Download, ArrowRight } from "lucide-react";
+import { Download } from "lucide-react";
 
 export const Route = createFileRoute("/_authenticated/dictionary/$package")({
   component: PackageDetail,
@@ -67,11 +67,6 @@ function PackageDetail() {
           >
             <Download className="ms-2 h-4 w-4" />
             تنزيل النموذج
-          </Button>
-          <Button size="sm" variant="ghost" asChild>
-            <Link to="/imports/$package" params={{ package: pkg.key }}>
-              فتح في مركز الاستيراد <ArrowRight className="ms-2 h-4 w-4" />
-            </Link>
           </Button>
         </div>
       </div>

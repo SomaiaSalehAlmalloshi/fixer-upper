@@ -33,6 +33,13 @@ export interface ColumnSpec {
   /** Table + natural-key column to resolve FK against. */
   fkTable?: PublicTables;
   fkNaturalKey?: string;    // e.g. "code"
+  /** Reference-data validation: verify the value exists in a ref_* table
+   *  before allowing the row to import. The value is stored as-is (free text)
+   *  but the import fails with a clear message if the reference record is
+   *  missing, telling the user which reference data to create first. */
+  refTable?: string;         // e.g. "ref_currencies"
+  refColumn?: string;        // e.g. "code"
+  refLabel?: string;          // human label, e.g. "Currency"
 }
 
 export interface SheetSpec {
@@ -72,49 +79,9 @@ const MARKET_ASSET_CLASS = ["fx", "ir", "commodity", "equity"] as const;
 const APPROVAL_STATUS = ["draft", "pending", "approved", "rejected"] as const;
 
 // ---------- Package 1: Master Data ----------
-// Only Currencies is registered as a validation-only sheet (no dedicated
-// master table exists yet). Other master sheets are declared unmapped so
-// users see them in templates but rows are not persisted.
-const masterData: PackageSpec = {
-  key: "master",
-  label: "البيانات المرجعية",
-  description: "Branches, users, currencies, and reference lists. Only sheets tied to existing tables are persisted.",
-  sheets: [
-    {
-      key: "Currencies",
-      label: "العملات",
-      table: null,
-      naturalKey: "code",
-      note: "Currencies are stored as free-text codes on each business table. This sheet validates format only.",
-      columns: [
-        { key: "code", kind: "string", required: true },
-        { key: "name", kind: "string", required: true },
-        { key: "symbol", kind: "string" },
-      ],
-    },
-    { key: "Branches", label: "الفروع", table: null, note: "Not yet mapped — validated only.", columns: [
-      { key: "code", kind: "string", required: true },
-      { key: "name", kind: "string", required: true },
-      { key: "country", kind: "string" },
-    ] },
-    { key: "Departments", label: "الإدارات", table: null, note: "Not yet mapped — validated only.", columns: [
-      { key: "code", kind: "string", required: true },
-      { key: "name", kind: "string", required: true },
-    ] },
-    { key: "Countries", label: "الدول", table: null, note: "Not yet mapped — validated only.", columns: [
-      { key: "iso_code", kind: "string", required: true },
-      { key: "name", kind: "string", required: true },
-    ] },
-    { key: "Customer Types", label: "أنواع العملاء", table: null, note: "Uses enum on credit_borrowers.", columns: [
-      { key: "code", kind: "enum", required: true, enumValues: BORROWER_TYPES },
-      { key: "label", kind: "string", required: true },
-    ] },
-    { key: "Collateral Types", label: "أنواع الضمانات", table: null, note: "Uses enum on credit_collateral.", columns: [
-      { key: "code", kind: "enum", required: true, enumValues: COLLATERAL_TYPES },
-      { key: "label", kind: "string", required: true },
-    ] },
-  ],
-};
+// REMOVED: Master Data is now managed in-app via the Reference Data module
+// (see src/lib/reference-data.ts and routes under /reference-data).
+// The old Excel-based Master Data import workflow has been retired.
 
 // ---------- Package 2: Credit Data ----------
 const creditData: PackageSpec = {
@@ -132,8 +99,8 @@ const creditData: PackageSpec = {
         { key: "name", kind: "string", required: true },
         { key: "borrower_type", kind: "enum", required: true, enumValues: BORROWER_TYPES, default: "corporate" },
         { key: "industry", kind: "string" },
-        { key: "country", kind: "string" },
-        { key: "credit_rating", kind: "string" },
+        { key: "country", kind: "string", refTable: "ref_countries", refColumn: "code", refLabel: "Country" },
+        { key: "credit_rating", kind: "string", refTable: "ref_rating_grades", refColumn: "code", refLabel: "Rating Grade" },
         { key: "pd", kind: "number", min: 0, max: 1, default: 0.02 },
         { key: "annual_revenue", kind: "number" },
         { key: "notes", kind: "string" },
@@ -154,8 +121,8 @@ const creditData: PackageSpec = {
           fkNaturalKey: "code",
           fkTargetColumn: "borrower_id",
         },
-        { key: "product_type", kind: "string", default: "Term Loan" },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "product_type", kind: "string", default: "Term Loan", refTable: "ref_product_types", refColumn: "code", refLabel: "Product Type" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "principal", kind: "number", required: true, min: 0 },
         { key: "outstanding", kind: "number", required: true, min: 0 },
         { key: "undrawn", kind: "number", min: 0, default: 0 },
@@ -182,11 +149,11 @@ const creditData: PackageSpec = {
           fkNaturalKey: "loan_number",
           fkTargetColumn: "loan_id",
         },
-        { key: "collateral_type", kind: "enum", required: true, enumValues: COLLATERAL_TYPES, default: "other" },
+        { key: "collateral_type", kind: "enum", required: true, enumValues: COLLATERAL_TYPES, default: "other", refTable: "ref_collateral_types", refColumn: "code", refLabel: "Collateral Type" },
         { key: "description", kind: "string" },
         { key: "market_value", kind: "number", required: true, min: 0 },
         { key: "haircut", kind: "number", min: 0, max: 1, default: 0.2 },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "valuation_date", kind: "date" },
       ],
     },
@@ -230,7 +197,7 @@ const capitalLiquidity: PackageSpec = {
       columns: [
         { key: "name", kind: "string", required: true },
         { key: "tier", kind: "enum", required: true, enumValues: HQLA_TIERS },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "market_value", kind: "number", required: true, min: 0 },
         { key: "haircut", kind: "number", min: 0, max: 1, default: 0 },
         { key: "encumbered", kind: "boolean", default: false },
@@ -247,7 +214,7 @@ const capitalLiquidity: PackageSpec = {
         { key: "bucket", kind: "enum", required: true, enumValues: LIQ_BUCKETS },
         { key: "category", kind: "string", default: "other" },
         { key: "amount", kind: "number", required: true, min: 0 },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "cashflow_date", kind: "date", required: true },
         { key: "stress_factor", kind: "number", min: 0, max: 1, default: 1 },
         { key: "counterparty", kind: "string" },
@@ -261,7 +228,7 @@ const capitalLiquidity: PackageSpec = {
         { key: "name", kind: "string", required: true },
         { key: "source_type", kind: "enum", required: true, enumValues: FUNDING_TYPES },
         { key: "amount", kind: "number", required: true, min: 0 },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "tenor_days", kind: "integer", min: 0, default: 30 },
         { key: "stable", kind: "boolean", default: false },
         { key: "asf_factor", kind: "number", min: 0, max: 1, default: 0.5 },
@@ -300,7 +267,7 @@ const riskData: PackageSpec = {
         { key: "rating", kind: "string" },
         { key: "exposure_amount", kind: "number", required: true, min: 0 },
         { key: "risk_weight", kind: "number", required: true, min: 0, max: 12.5 },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "status", kind: "enum", enumValues: APPROVAL_STATUS, default: "draft" },
         { key: "notes", kind: "string" },
       ],
@@ -315,7 +282,7 @@ const riskData: PackageSpec = {
         { key: "name", kind: "string", required: true },
         { key: "asset_class", kind: "enum", required: true, enumValues: MARKET_ASSET_CLASS },
         { key: "portfolio", kind: "string", default: "trading" },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "quantity", kind: "number", required: true },
         { key: "price", kind: "number", required: true, min: 0 },
         { key: "duration", kind: "number", default: 0 },
@@ -364,7 +331,7 @@ const riskData: PackageSpec = {
         { key: "description", kind: "string" },
         { key: "gross_loss", kind: "number", min: 0, default: 0 },
         { key: "recovery", kind: "number", min: 0, default: 0 },
-        { key: "currency", kind: "string", default: "USD" },
+        { key: "currency", kind: "string", default: "USD", refTable: "ref_currencies", refColumn: "code", refLabel: "Currency" },
         { key: "occurred_at", kind: "date" },
         { key: "discovered_at", kind: "date" },
         { key: "owner_email", kind: "string" },
@@ -413,7 +380,7 @@ const riskData: PackageSpec = {
   ],
 };
 
-export const PACKAGES: PackageSpec[] = [masterData, creditData, capitalLiquidity, riskData];
+export const PACKAGES: PackageSpec[] = [creditData, capitalLiquidity, riskData];
 
 export function findPackage(key: string): PackageSpec | undefined {
   return PACKAGES.find((p) => p.key === key);

@@ -240,6 +240,17 @@ export async function runImport(
     const errors: RowError[] = [];
     const insertRows: { row: Record<string, unknown>; excelRow: number }[] = [];
 
+    // Pre-load reference-data sets for validation (one query per ref table).
+    const refCache = new Map<string, Set<string>>();
+    async function loadRefSet(table: string, column: string): Promise<Set<string>> {
+      const cacheKey = `${table}.${column}`;
+      if (refCache.has(cacheKey)) return refCache.get(cacheKey)!;
+      const { data } = await supabase.from(table as never).select(column);
+      const set = new Set((data ?? []).map((r: Record<string, unknown>) => String(r[column] ?? "").toUpperCase()));
+      refCache.set(cacheKey, set);
+      return set;
+    }
+
     for (let i = 0; i < sheet.preparedRows.length; i++) {
       const row = { ...sheet.preparedRows[i] };
       const excelRow = i + 2;
@@ -267,6 +278,21 @@ export async function runImport(
           row[col.fkTargetColumn] = data.id;
         }
         delete row[col.key];
+      }
+      // Reference-data validation: verify free-text values exist in ref_* tables.
+      for (const col of sheet.spec.columns) {
+        if (!col.refTable || !col.refColumn || !col.refLabel) continue;
+        const val = row[col.key];
+        if (val === null || val === undefined || val === "") continue;
+        const refSet = await loadRefSet(col.refTable, col.refColumn);
+        if (!refSet.has(String(val).toUpperCase())) {
+          errors.push({
+            row: excelRow,
+            column: col.key,
+            message: `${col.refLabel} "${val}" does not exist. Create it first in Reference Data → ${col.refLabel}.`,
+          });
+          ok = false;
+        }
       }
       if (ok) {
         // Attach ownership field — stripped later if the target table doesn't have it.

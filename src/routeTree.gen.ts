@@ -18,10 +18,10 @@ import { Route as AuthenticatedStressRouteImport } from './routes/_authenticated
 import { Route as AuthenticatedRulesRouteImport } from './routes/_authenticated/rules'
 import { Route as AuthenticatedReportsRouteImport } from './routes/_authenticated/reports'
 import { Route as AuthenticatedReportingRouteImport } from './routes/_authenticated/reporting'
+import { Route as AuthenticatedReferenceDataRouteImport } from './routes/_authenticated/reference-data'
 import { Route as AuthenticatedOperationalRouteImport } from './routes/_authenticated/operational'
 import { Route as AuthenticatedMarketRouteImport } from './routes/_authenticated/market'
 import { Route as AuthenticatedLiquidityRouteImport } from './routes/_authenticated/liquidity'
-import { Route as AuthenticatedImportsRouteImport } from './routes/_authenticated/imports'
 import { Route as AuthenticatedHistoryRouteImport } from './routes/_authenticated/history'
 import { Route as AuthenticatedDictionaryRouteImport } from './routes/_authenticated/dictionary'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -32,10 +32,10 @@ import { Route as AuthenticatedAiRouteImport } from './routes/_authenticated/ai'
 import { Route as AuthenticatedWorkflowIndexRouteImport } from './routes/_authenticated/workflow.index'
 import { Route as AuthenticatedStressIndexRouteImport } from './routes/_authenticated/stress.index'
 import { Route as AuthenticatedReportingIndexRouteImport } from './routes/_authenticated/reporting.index'
+import { Route as AuthenticatedReferenceDataIndexRouteImport } from './routes/_authenticated/reference-data.index'
 import { Route as AuthenticatedOperationalIndexRouteImport } from './routes/_authenticated/operational.index'
 import { Route as AuthenticatedMarketIndexRouteImport } from './routes/_authenticated/market.index'
 import { Route as AuthenticatedLiquidityIndexRouteImport } from './routes/_authenticated/liquidity.index'
-import { Route as AuthenticatedImportsIndexRouteImport } from './routes/_authenticated/imports.index'
 import { Route as AuthenticatedDictionaryIndexRouteImport } from './routes/_authenticated/dictionary.index'
 import { Route as AuthenticatedCreditIndexRouteImport } from './routes/_authenticated/credit.index'
 import { Route as AuthenticatedComplianceIndexRouteImport } from './routes/_authenticated/compliance.index'
@@ -54,6 +54,7 @@ import { Route as AuthenticatedStressIdRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedReportingSchedulesRouteImport } from './routes/_authenticated/reporting.schedules'
 import { Route as AuthenticatedReportingHistoryRouteImport } from './routes/_authenticated/reporting.history'
 import { Route as AuthenticatedReportingKeyRouteImport } from './routes/_authenticated/reporting.$key'
+import { Route as AuthenticatedReferenceDataTableKeyRouteImport } from './routes/_authenticated/reference-data.$tableKey'
 import { Route as AuthenticatedOperationalReportsRouteImport } from './routes/_authenticated/operational.reports'
 import { Route as AuthenticatedOperationalRegisterRouteImport } from './routes/_authenticated/operational.register'
 import { Route as AuthenticatedOperationalRcsaRouteImport } from './routes/_authenticated/operational.rcsa'
@@ -82,8 +83,6 @@ import { Route as AuthenticatedLiquidityGapRouteImport } from './routes/_authent
 import { Route as AuthenticatedLiquidityFundingRouteImport } from './routes/_authenticated/liquidity.funding'
 import { Route as AuthenticatedLiquidityCashflowRouteImport } from './routes/_authenticated/liquidity.cashflow'
 import { Route as AuthenticatedLiquidityBucketsRouteImport } from './routes/_authenticated/liquidity.buckets'
-import { Route as AuthenticatedImportsHistoryRouteImport } from './routes/_authenticated/imports.history'
-import { Route as AuthenticatedImportsPackageRouteImport } from './routes/_authenticated/imports.$package'
 import { Route as AuthenticatedDictionaryValidateRouteImport } from './routes/_authenticated/dictionary.validate'
 import { Route as AuthenticatedDictionaryPackageRouteImport } from './routes/_authenticated/dictionary.$package'
 import { Route as AuthenticatedCreditWatchlistRouteImport } from './routes/_authenticated/credit.watchlist'
@@ -157,6 +156,12 @@ const AuthenticatedReportingRoute = AuthenticatedReportingRouteImport.update({
   path: '/reporting',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedReferenceDataRoute =
+  AuthenticatedReferenceDataRouteImport.update({
+    id: '/reference-data',
+    path: '/reference-data',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedOperationalRoute =
   AuthenticatedOperationalRouteImport.update({
     id: '/operational',
@@ -171,11 +176,6 @@ const AuthenticatedMarketRoute = AuthenticatedMarketRouteImport.update({
 const AuthenticatedLiquidityRoute = AuthenticatedLiquidityRouteImport.update({
   id: '/liquidity',
   path: '/liquidity',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedImportsRoute = AuthenticatedImportsRouteImport.update({
-  id: '/imports',
-  path: '/imports',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedHistoryRoute = AuthenticatedHistoryRouteImport.update({
@@ -231,6 +231,12 @@ const AuthenticatedReportingIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedReportingRoute,
   } as any)
+const AuthenticatedReferenceDataIndexRoute =
+  AuthenticatedReferenceDataIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedReferenceDataRoute,
+  } as any)
 const AuthenticatedOperationalIndexRoute =
   AuthenticatedOperationalIndexRouteImport.update({
     id: '/',
@@ -248,12 +254,6 @@ const AuthenticatedLiquidityIndexRoute =
     id: '/',
     path: '/',
     getParentRoute: () => AuthenticatedLiquidityRoute,
-  } as any)
-const AuthenticatedImportsIndexRoute =
-  AuthenticatedImportsIndexRouteImport.update({
-    id: '/',
-    path: '/',
-    getParentRoute: () => AuthenticatedImportsRoute,
   } as any)
 const AuthenticatedDictionaryIndexRoute =
   AuthenticatedDictionaryIndexRouteImport.update({
@@ -358,6 +358,12 @@ const AuthenticatedReportingKeyRoute =
     id: '/$key',
     path: '/$key',
     getParentRoute: () => AuthenticatedReportingRoute,
+  } as any)
+const AuthenticatedReferenceDataTableKeyRoute =
+  AuthenticatedReferenceDataTableKeyRouteImport.update({
+    id: '/$tableKey',
+    path: '/$tableKey',
+    getParentRoute: () => AuthenticatedReferenceDataRoute,
   } as any)
 const AuthenticatedOperationalReportsRoute =
   AuthenticatedOperationalReportsRouteImport.update({
@@ -523,18 +529,6 @@ const AuthenticatedLiquidityBucketsRoute =
     id: '/buckets',
     path: '/buckets',
     getParentRoute: () => AuthenticatedLiquidityRoute,
-  } as any)
-const AuthenticatedImportsHistoryRoute =
-  AuthenticatedImportsHistoryRouteImport.update({
-    id: '/history',
-    path: '/history',
-    getParentRoute: () => AuthenticatedImportsRoute,
-  } as any)
-const AuthenticatedImportsPackageRoute =
-  AuthenticatedImportsPackageRouteImport.update({
-    id: '/$package',
-    path: '/$package',
-    getParentRoute: () => AuthenticatedImportsRoute,
   } as any)
 const AuthenticatedDictionaryValidateRoute =
   AuthenticatedDictionaryValidateRouteImport.update({
@@ -712,10 +706,10 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/dictionary': typeof AuthenticatedDictionaryRouteWithChildren
   '/history': typeof AuthenticatedHistoryRoute
-  '/imports': typeof AuthenticatedImportsRouteWithChildren
   '/liquidity': typeof AuthenticatedLiquidityRouteWithChildren
   '/market': typeof AuthenticatedMarketRouteWithChildren
   '/operational': typeof AuthenticatedOperationalRouteWithChildren
+  '/reference-data': typeof AuthenticatedReferenceDataRouteWithChildren
   '/reporting': typeof AuthenticatedReportingRouteWithChildren
   '/reports': typeof AuthenticatedReportsRoute
   '/rules': typeof AuthenticatedRulesRoute
@@ -746,8 +740,6 @@ export interface FileRoutesByFullPath {
   '/credit/watchlist': typeof AuthenticatedCreditWatchlistRoute
   '/dictionary/$package': typeof AuthenticatedDictionaryPackageRoute
   '/dictionary/validate': typeof AuthenticatedDictionaryValidateRoute
-  '/imports/$package': typeof AuthenticatedImportsPackageRoute
-  '/imports/history': typeof AuthenticatedImportsHistoryRoute
   '/liquidity/buckets': typeof AuthenticatedLiquidityBucketsRoute
   '/liquidity/cashflow': typeof AuthenticatedLiquidityCashflowRoute
   '/liquidity/funding': typeof AuthenticatedLiquidityFundingRoute
@@ -776,6 +768,7 @@ export interface FileRoutesByFullPath {
   '/operational/rcsa': typeof AuthenticatedOperationalRcsaRoute
   '/operational/register': typeof AuthenticatedOperationalRegisterRoute
   '/operational/reports': typeof AuthenticatedOperationalReportsRoute
+  '/reference-data/$tableKey': typeof AuthenticatedReferenceDataTableKeyRoute
   '/reporting/$key': typeof AuthenticatedReportingKeyRoute
   '/reporting/history': typeof AuthenticatedReportingHistoryRoute
   '/reporting/schedules': typeof AuthenticatedReportingSchedulesRoute
@@ -794,10 +787,10 @@ export interface FileRoutesByFullPath {
   '/compliance/': typeof AuthenticatedComplianceIndexRoute
   '/credit/': typeof AuthenticatedCreditIndexRoute
   '/dictionary/': typeof AuthenticatedDictionaryIndexRoute
-  '/imports/': typeof AuthenticatedImportsIndexRoute
   '/liquidity/': typeof AuthenticatedLiquidityIndexRoute
   '/market/': typeof AuthenticatedMarketIndexRoute
   '/operational/': typeof AuthenticatedOperationalIndexRoute
+  '/reference-data/': typeof AuthenticatedReferenceDataIndexRoute
   '/reporting/': typeof AuthenticatedReportingIndexRoute
   '/stress/': typeof AuthenticatedStressIndexRoute
   '/workflow/': typeof AuthenticatedWorkflowIndexRoute
@@ -839,8 +832,6 @@ export interface FileRoutesByTo {
   '/credit/watchlist': typeof AuthenticatedCreditWatchlistRoute
   '/dictionary/$package': typeof AuthenticatedDictionaryPackageRoute
   '/dictionary/validate': typeof AuthenticatedDictionaryValidateRoute
-  '/imports/$package': typeof AuthenticatedImportsPackageRoute
-  '/imports/history': typeof AuthenticatedImportsHistoryRoute
   '/liquidity/buckets': typeof AuthenticatedLiquidityBucketsRoute
   '/liquidity/cashflow': typeof AuthenticatedLiquidityCashflowRoute
   '/liquidity/funding': typeof AuthenticatedLiquidityFundingRoute
@@ -869,6 +860,7 @@ export interface FileRoutesByTo {
   '/operational/rcsa': typeof AuthenticatedOperationalRcsaRoute
   '/operational/register': typeof AuthenticatedOperationalRegisterRoute
   '/operational/reports': typeof AuthenticatedOperationalReportsRoute
+  '/reference-data/$tableKey': typeof AuthenticatedReferenceDataTableKeyRoute
   '/reporting/$key': typeof AuthenticatedReportingKeyRoute
   '/reporting/history': typeof AuthenticatedReportingHistoryRoute
   '/reporting/schedules': typeof AuthenticatedReportingSchedulesRoute
@@ -887,10 +879,10 @@ export interface FileRoutesByTo {
   '/compliance': typeof AuthenticatedComplianceIndexRoute
   '/credit': typeof AuthenticatedCreditIndexRoute
   '/dictionary': typeof AuthenticatedDictionaryIndexRoute
-  '/imports': typeof AuthenticatedImportsIndexRoute
   '/liquidity': typeof AuthenticatedLiquidityIndexRoute
   '/market': typeof AuthenticatedMarketIndexRoute
   '/operational': typeof AuthenticatedOperationalIndexRoute
+  '/reference-data': typeof AuthenticatedReferenceDataIndexRoute
   '/reporting': typeof AuthenticatedReportingIndexRoute
   '/stress': typeof AuthenticatedStressIndexRoute
   '/workflow': typeof AuthenticatedWorkflowIndexRoute
@@ -911,10 +903,10 @@ export interface FileRoutesById {
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/dictionary': typeof AuthenticatedDictionaryRouteWithChildren
   '/_authenticated/history': typeof AuthenticatedHistoryRoute
-  '/_authenticated/imports': typeof AuthenticatedImportsRouteWithChildren
   '/_authenticated/liquidity': typeof AuthenticatedLiquidityRouteWithChildren
   '/_authenticated/market': typeof AuthenticatedMarketRouteWithChildren
   '/_authenticated/operational': typeof AuthenticatedOperationalRouteWithChildren
+  '/_authenticated/reference-data': typeof AuthenticatedReferenceDataRouteWithChildren
   '/_authenticated/reporting': typeof AuthenticatedReportingRouteWithChildren
   '/_authenticated/reports': typeof AuthenticatedReportsRoute
   '/_authenticated/rules': typeof AuthenticatedRulesRoute
@@ -945,8 +937,6 @@ export interface FileRoutesById {
   '/_authenticated/credit/watchlist': typeof AuthenticatedCreditWatchlistRoute
   '/_authenticated/dictionary/$package': typeof AuthenticatedDictionaryPackageRoute
   '/_authenticated/dictionary/validate': typeof AuthenticatedDictionaryValidateRoute
-  '/_authenticated/imports/$package': typeof AuthenticatedImportsPackageRoute
-  '/_authenticated/imports/history': typeof AuthenticatedImportsHistoryRoute
   '/_authenticated/liquidity/buckets': typeof AuthenticatedLiquidityBucketsRoute
   '/_authenticated/liquidity/cashflow': typeof AuthenticatedLiquidityCashflowRoute
   '/_authenticated/liquidity/funding': typeof AuthenticatedLiquidityFundingRoute
@@ -975,6 +965,7 @@ export interface FileRoutesById {
   '/_authenticated/operational/rcsa': typeof AuthenticatedOperationalRcsaRoute
   '/_authenticated/operational/register': typeof AuthenticatedOperationalRegisterRoute
   '/_authenticated/operational/reports': typeof AuthenticatedOperationalReportsRoute
+  '/_authenticated/reference-data/$tableKey': typeof AuthenticatedReferenceDataTableKeyRoute
   '/_authenticated/reporting/$key': typeof AuthenticatedReportingKeyRoute
   '/_authenticated/reporting/history': typeof AuthenticatedReportingHistoryRoute
   '/_authenticated/reporting/schedules': typeof AuthenticatedReportingSchedulesRoute
@@ -993,10 +984,10 @@ export interface FileRoutesById {
   '/_authenticated/compliance/': typeof AuthenticatedComplianceIndexRoute
   '/_authenticated/credit/': typeof AuthenticatedCreditIndexRoute
   '/_authenticated/dictionary/': typeof AuthenticatedDictionaryIndexRoute
-  '/_authenticated/imports/': typeof AuthenticatedImportsIndexRoute
   '/_authenticated/liquidity/': typeof AuthenticatedLiquidityIndexRoute
   '/_authenticated/market/': typeof AuthenticatedMarketIndexRoute
   '/_authenticated/operational/': typeof AuthenticatedOperationalIndexRoute
+  '/_authenticated/reference-data/': typeof AuthenticatedReferenceDataIndexRoute
   '/_authenticated/reporting/': typeof AuthenticatedReportingIndexRoute
   '/_authenticated/stress/': typeof AuthenticatedStressIndexRoute
   '/_authenticated/workflow/': typeof AuthenticatedWorkflowIndexRoute
@@ -1017,10 +1008,10 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/dictionary'
     | '/history'
-    | '/imports'
     | '/liquidity'
     | '/market'
     | '/operational'
+    | '/reference-data'
     | '/reporting'
     | '/reports'
     | '/rules'
@@ -1051,8 +1042,6 @@ export interface FileRouteTypes {
     | '/credit/watchlist'
     | '/dictionary/$package'
     | '/dictionary/validate'
-    | '/imports/$package'
-    | '/imports/history'
     | '/liquidity/buckets'
     | '/liquidity/cashflow'
     | '/liquidity/funding'
@@ -1081,6 +1070,7 @@ export interface FileRouteTypes {
     | '/operational/rcsa'
     | '/operational/register'
     | '/operational/reports'
+    | '/reference-data/$tableKey'
     | '/reporting/$key'
     | '/reporting/history'
     | '/reporting/schedules'
@@ -1099,10 +1089,10 @@ export interface FileRouteTypes {
     | '/compliance/'
     | '/credit/'
     | '/dictionary/'
-    | '/imports/'
     | '/liquidity/'
     | '/market/'
     | '/operational/'
+    | '/reference-data/'
     | '/reporting/'
     | '/stress/'
     | '/workflow/'
@@ -1144,8 +1134,6 @@ export interface FileRouteTypes {
     | '/credit/watchlist'
     | '/dictionary/$package'
     | '/dictionary/validate'
-    | '/imports/$package'
-    | '/imports/history'
     | '/liquidity/buckets'
     | '/liquidity/cashflow'
     | '/liquidity/funding'
@@ -1174,6 +1162,7 @@ export interface FileRouteTypes {
     | '/operational/rcsa'
     | '/operational/register'
     | '/operational/reports'
+    | '/reference-data/$tableKey'
     | '/reporting/$key'
     | '/reporting/history'
     | '/reporting/schedules'
@@ -1192,10 +1181,10 @@ export interface FileRouteTypes {
     | '/compliance'
     | '/credit'
     | '/dictionary'
-    | '/imports'
     | '/liquidity'
     | '/market'
     | '/operational'
+    | '/reference-data'
     | '/reporting'
     | '/stress'
     | '/workflow'
@@ -1215,10 +1204,10 @@ export interface FileRouteTypes {
     | '/_authenticated/dashboard'
     | '/_authenticated/dictionary'
     | '/_authenticated/history'
-    | '/_authenticated/imports'
     | '/_authenticated/liquidity'
     | '/_authenticated/market'
     | '/_authenticated/operational'
+    | '/_authenticated/reference-data'
     | '/_authenticated/reporting'
     | '/_authenticated/reports'
     | '/_authenticated/rules'
@@ -1249,8 +1238,6 @@ export interface FileRouteTypes {
     | '/_authenticated/credit/watchlist'
     | '/_authenticated/dictionary/$package'
     | '/_authenticated/dictionary/validate'
-    | '/_authenticated/imports/$package'
-    | '/_authenticated/imports/history'
     | '/_authenticated/liquidity/buckets'
     | '/_authenticated/liquidity/cashflow'
     | '/_authenticated/liquidity/funding'
@@ -1279,6 +1266,7 @@ export interface FileRouteTypes {
     | '/_authenticated/operational/rcsa'
     | '/_authenticated/operational/register'
     | '/_authenticated/operational/reports'
+    | '/_authenticated/reference-data/$tableKey'
     | '/_authenticated/reporting/$key'
     | '/_authenticated/reporting/history'
     | '/_authenticated/reporting/schedules'
@@ -1297,10 +1285,10 @@ export interface FileRouteTypes {
     | '/_authenticated/compliance/'
     | '/_authenticated/credit/'
     | '/_authenticated/dictionary/'
-    | '/_authenticated/imports/'
     | '/_authenticated/liquidity/'
     | '/_authenticated/market/'
     | '/_authenticated/operational/'
+    | '/_authenticated/reference-data/'
     | '/_authenticated/reporting/'
     | '/_authenticated/stress/'
     | '/_authenticated/workflow/'
@@ -1385,6 +1373,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedReportingRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/reference-data': {
+      id: '/_authenticated/reference-data'
+      path: '/reference-data'
+      fullPath: '/reference-data'
+      preLoaderRoute: typeof AuthenticatedReferenceDataRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/operational': {
       id: '/_authenticated/operational'
       path: '/operational'
@@ -1404,13 +1399,6 @@ declare module '@tanstack/react-router' {
       path: '/liquidity'
       fullPath: '/liquidity'
       preLoaderRoute: typeof AuthenticatedLiquidityRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/imports': {
-      id: '/_authenticated/imports'
-      path: '/imports'
-      fullPath: '/imports'
-      preLoaderRoute: typeof AuthenticatedImportsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/history': {
@@ -1483,6 +1471,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedReportingIndexRouteImport
       parentRoute: typeof AuthenticatedReportingRoute
     }
+    '/_authenticated/reference-data/': {
+      id: '/_authenticated/reference-data/'
+      path: '/'
+      fullPath: '/reference-data/'
+      preLoaderRoute: typeof AuthenticatedReferenceDataIndexRouteImport
+      parentRoute: typeof AuthenticatedReferenceDataRoute
+    }
     '/_authenticated/operational/': {
       id: '/_authenticated/operational/'
       path: '/'
@@ -1503,13 +1498,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/liquidity/'
       preLoaderRoute: typeof AuthenticatedLiquidityIndexRouteImport
       parentRoute: typeof AuthenticatedLiquidityRoute
-    }
-    '/_authenticated/imports/': {
-      id: '/_authenticated/imports/'
-      path: '/'
-      fullPath: '/imports/'
-      preLoaderRoute: typeof AuthenticatedImportsIndexRouteImport
-      parentRoute: typeof AuthenticatedImportsRoute
     }
     '/_authenticated/dictionary/': {
       id: '/_authenticated/dictionary/'
@@ -1636,6 +1624,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/reporting/$key'
       preLoaderRoute: typeof AuthenticatedReportingKeyRouteImport
       parentRoute: typeof AuthenticatedReportingRoute
+    }
+    '/_authenticated/reference-data/$tableKey': {
+      id: '/_authenticated/reference-data/$tableKey'
+      path: '/$tableKey'
+      fullPath: '/reference-data/$tableKey'
+      preLoaderRoute: typeof AuthenticatedReferenceDataTableKeyRouteImport
+      parentRoute: typeof AuthenticatedReferenceDataRoute
     }
     '/_authenticated/operational/reports': {
       id: '/_authenticated/operational/reports'
@@ -1832,20 +1827,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/liquidity/buckets'
       preLoaderRoute: typeof AuthenticatedLiquidityBucketsRouteImport
       parentRoute: typeof AuthenticatedLiquidityRoute
-    }
-    '/_authenticated/imports/history': {
-      id: '/_authenticated/imports/history'
-      path: '/history'
-      fullPath: '/imports/history'
-      preLoaderRoute: typeof AuthenticatedImportsHistoryRouteImport
-      parentRoute: typeof AuthenticatedImportsRoute
-    }
-    '/_authenticated/imports/$package': {
-      id: '/_authenticated/imports/$package'
-      path: '/$package'
-      fullPath: '/imports/$package'
-      preLoaderRoute: typeof AuthenticatedImportsPackageRouteImport
-      parentRoute: typeof AuthenticatedImportsRoute
     }
     '/_authenticated/dictionary/validate': {
       id: '/_authenticated/dictionary/validate'
@@ -2163,21 +2144,6 @@ const AuthenticatedDictionaryRouteWithChildren =
     AuthenticatedDictionaryRouteChildren,
   )
 
-interface AuthenticatedImportsRouteChildren {
-  AuthenticatedImportsPackageRoute: typeof AuthenticatedImportsPackageRoute
-  AuthenticatedImportsHistoryRoute: typeof AuthenticatedImportsHistoryRoute
-  AuthenticatedImportsIndexRoute: typeof AuthenticatedImportsIndexRoute
-}
-
-const AuthenticatedImportsRouteChildren: AuthenticatedImportsRouteChildren = {
-  AuthenticatedImportsPackageRoute: AuthenticatedImportsPackageRoute,
-  AuthenticatedImportsHistoryRoute: AuthenticatedImportsHistoryRoute,
-  AuthenticatedImportsIndexRoute: AuthenticatedImportsIndexRoute,
-}
-
-const AuthenticatedImportsRouteWithChildren =
-  AuthenticatedImportsRoute._addFileChildren(AuthenticatedImportsRouteChildren)
-
 interface AuthenticatedLiquidityRouteChildren {
   AuthenticatedLiquidityBucketsRoute: typeof AuthenticatedLiquidityBucketsRoute
   AuthenticatedLiquidityCashflowRoute: typeof AuthenticatedLiquidityCashflowRoute
@@ -2275,6 +2241,23 @@ const AuthenticatedOperationalRouteWithChildren =
     AuthenticatedOperationalRouteChildren,
   )
 
+interface AuthenticatedReferenceDataRouteChildren {
+  AuthenticatedReferenceDataTableKeyRoute: typeof AuthenticatedReferenceDataTableKeyRoute
+  AuthenticatedReferenceDataIndexRoute: typeof AuthenticatedReferenceDataIndexRoute
+}
+
+const AuthenticatedReferenceDataRouteChildren: AuthenticatedReferenceDataRouteChildren =
+  {
+    AuthenticatedReferenceDataTableKeyRoute:
+      AuthenticatedReferenceDataTableKeyRoute,
+    AuthenticatedReferenceDataIndexRoute: AuthenticatedReferenceDataIndexRoute,
+  }
+
+const AuthenticatedReferenceDataRouteWithChildren =
+  AuthenticatedReferenceDataRoute._addFileChildren(
+    AuthenticatedReferenceDataRouteChildren,
+  )
+
 interface AuthenticatedReportingRouteChildren {
   AuthenticatedReportingKeyRoute: typeof AuthenticatedReportingKeyRoute
   AuthenticatedReportingHistoryRoute: typeof AuthenticatedReportingHistoryRoute
@@ -2346,10 +2329,10 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDictionaryRoute: typeof AuthenticatedDictionaryRouteWithChildren
   AuthenticatedHistoryRoute: typeof AuthenticatedHistoryRoute
-  AuthenticatedImportsRoute: typeof AuthenticatedImportsRouteWithChildren
   AuthenticatedLiquidityRoute: typeof AuthenticatedLiquidityRouteWithChildren
   AuthenticatedMarketRoute: typeof AuthenticatedMarketRouteWithChildren
   AuthenticatedOperationalRoute: typeof AuthenticatedOperationalRouteWithChildren
+  AuthenticatedReferenceDataRoute: typeof AuthenticatedReferenceDataRouteWithChildren
   AuthenticatedReportingRoute: typeof AuthenticatedReportingRouteWithChildren
   AuthenticatedReportsRoute: typeof AuthenticatedReportsRoute
   AuthenticatedRulesRoute: typeof AuthenticatedRulesRoute
@@ -2366,10 +2349,10 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDictionaryRoute: AuthenticatedDictionaryRouteWithChildren,
   AuthenticatedHistoryRoute: AuthenticatedHistoryRoute,
-  AuthenticatedImportsRoute: AuthenticatedImportsRouteWithChildren,
   AuthenticatedLiquidityRoute: AuthenticatedLiquidityRouteWithChildren,
   AuthenticatedMarketRoute: AuthenticatedMarketRouteWithChildren,
   AuthenticatedOperationalRoute: AuthenticatedOperationalRouteWithChildren,
+  AuthenticatedReferenceDataRoute: AuthenticatedReferenceDataRouteWithChildren,
   AuthenticatedReportingRoute: AuthenticatedReportingRouteWithChildren,
   AuthenticatedReportsRoute: AuthenticatedReportsRoute,
   AuthenticatedRulesRoute: AuthenticatedRulesRoute,
@@ -2394,3 +2377,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
